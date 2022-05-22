@@ -11,7 +11,7 @@ Archivo :: Archivo () {
 }
 
 void Archivo :: leerArchivoEscritor(Escritor* &escritor) {
-    archivo.open("C:\\Users\\Pablo\\OneDrive\\Documentos\\Algoritmo y Programacion II\\prueba2tp2\\texto.txt", ios::in);
+    archivo.open("texto.txt", ios::in);
 
     if (archivo.fail()){
         cout << "No se puede abrir el archivo." << endl;
