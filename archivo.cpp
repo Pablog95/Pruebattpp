@@ -40,7 +40,7 @@ void Archivo :: leerArchivoEscritor(Escritor* &escritor) {
 Lectura* Archivo :: LeerArchivoLecturas(){
 	string narracion, titulo,referenciaAutor = "anonimo";
 	string anioPublicacion, minutos, datoSegunNarracion;
-	archivo.open(,ios::in);
+	archivo.open("textoLecturas.txt",ios::in);
 	
 	if (archivo.fail()){
 		cout << "No se puede abrir el archivo." << endl;
