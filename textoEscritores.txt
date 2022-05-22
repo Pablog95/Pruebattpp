@@ -1,0 +1,23 @@
+(1)
+Julio Cortazar
+argentino
+1914
+1984
+
+(2)
+Julio Cortazar
+argentino
+-1
+1984
+
+(3)
+Julio Cortazar
+argentino
+1914
+-1
+
+(4)
+Julio Cortazar
+argentino
+-1
+-1
