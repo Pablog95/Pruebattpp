@@ -14,7 +14,7 @@ class Lista
 	public:
 		Lista();
 		~Lista();
-		void agregarElementos(string dato, int posicion);
+		void agregarElementos(T* dato);
 		bool listaVacia();
 		void borrarDato(int posicion);
 		
@@ -40,17 +40,17 @@ bool Lista<T> :: listaVacia(){
 }
 
 template<class T>
-void Lista<T> :: agregarElementos(string dato,int posicion){
+void Lista<T> :: agregarElementos(T* dato){
 	Nodo<T>* nuevo = new Nodo<T>(dato);
-	if (posicion == 1){
+	if (!(this->listaVacia())){
 		nuevo->cambiarSiguiente(primero);
 		primero = nuevo;
-	}
+	}/*
 	else{
 		Nodo<T>* anterior = obtenerNodo(posicion - 1);
 		nuevo->cambiarSiguiente(anterior->obtenerSiguiente());
 		anterior->cambiarSiguiente(nuevo);
-	}
+	}*/
 	cantidad++;
 }
 template<class T>
