@@ -97,7 +97,7 @@ int Archivo :: anioNacimientoo(){
 int Archivo :: anioFallecimientoo(){
 	return atoi(anioFallecimiento);
 }
-*/
+
 void Archivo :: mostrarArchivo() {
 
     cout << primero << endl;
@@ -106,4 +106,4 @@ void Archivo :: mostrarArchivo() {
     cout << anioNacimiento << endl;
     cout << anioFallecimiento << endl;
 
-}
+}*/
