@@ -52,7 +52,14 @@ Lectura* Archivo :: LeerArchivoLecturas(){
 		getline(archivo,minutos);
 		getline(archivo,anioPublicacion);
 		getline(archivo,datoSegunNarracion);
-		getline(archivo,referenciaAutor);
+		if(datoSegunNarracion == "HISTORICA"){
+			getline(archivo,tema);
+			getline(archivo,referenciaAutor);
+			return new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
+		}else{
+			getline(archivo,referenciaAutor);
+		}
+		getline(archivo,saltoLinea);
 		
 		if (narracion == "N"){
 			cout << "Novela" << endl;
