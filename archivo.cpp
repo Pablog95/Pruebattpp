@@ -14,15 +14,16 @@ void Archivo :: leerArchivoEscritor(Lista<Escritor>* listaEscritor,Escritor* &es
 
     if (archivo.fail()){
         cout << "No se puede abrir el archivo." << endl;
-        exit(1);
+        exit(1);//Sacar
     }
 	while (!archivo.eof()){
 
-		getline(archivo, primero,'\n');
-		getline(archivo, nombreApellido,'\n');
-		getline(archivo, nacionalidad,'\n');
-		getline(archivo, anioNacimiento,'\n');
-		getline(archivo, anioFallecimiento,'\n');
+		getline(archivo, primero);
+		getline(archivo, nombreApellido);
+		getline(archivo, nacionalidad);
+		getline(archivo, anioNacimiento);
+		getline(archivo, anioFallecimiento);
+		getline(archivo, saltoLinea);
 		
     		cout << primero << endl;
     		cout << nombreApellido << endl;
@@ -44,7 +45,7 @@ Lectura* Archivo :: LeerArchivoLecturas(){
 	
 	if (archivo.fail()){
 		cout << "No se puede abrir el archivo." << endl;
-		exit(1);
+		exit(1);//Sacar
 	}
 	while (archivo.eof()){
 		getline(archivo, narracion);
