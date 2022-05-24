@@ -8,11 +8,11 @@ class Lectura
 {
 	protected:
 		string titulo;
-		unsigned int minutos;
-		int anio;
+		string minutos;
+		string anio;
 		string autor;
 	public:
-		Lectura (string _titulo, unsigned int _minutos, int _anio, string _autor);
+		Lectura (string _titulo, string _minutos, string _anio, string _autor);
 		virtual void mostrarDatos();
 		virtual ~Lectura(){};
 };
