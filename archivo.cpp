@@ -56,15 +56,15 @@ Lectura* Archivo :: LeerArchivoLecturas(){
 		
 		if (narracion == "N"){
 			cout << "Novela" << endl;
-			new Novela(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion); 
+			return new Novela(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion); 
 		}
 		if (narracion == "C"){
 			cout << "Cuento" << endl;
-			new Cuento(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion);
+			return new Cuento(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion);
 		}
 		if(narracion == "P"){
 			cout << "Poema" << endl;
-			new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
+			return new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
 		}
 		
 	}
