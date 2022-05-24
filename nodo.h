@@ -9,18 +9,18 @@ class Nodo
 
 {
 	private:
-		T dato;
+		T* dato;
 		Nodo<T>* siguiente;
 	public:
 		
-		Nodo(T _dato);
+		Nodo(T* _dato);
 		void cambiarSiguiente(Nodo* _siguiente);
 		Nodo<T>* obtenerSiguiente();
 		T obtenerDato();
 };
 
 template <class T>
-Nodo<T> :: Nodo(T _dato){
+Nodo<T> :: Nodo(T* _dato){
 	dato = _dato;
 	siguiente = 0;
 }
