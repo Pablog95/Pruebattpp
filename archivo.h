@@ -1,9 +1,13 @@
 #ifndef ARCHIVO_H
 #define ARCHIVO_H
 #include <fstream>
-//#include "lista.h"
+#include "lista.h"
 #include "escritor.h"
 #include "lectura.h"
+#include "historica.h"
+#include "poema.h"
+#include "novela.h"
+#include "cuento.h"
 
 using namespace std;
 
