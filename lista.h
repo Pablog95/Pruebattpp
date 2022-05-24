@@ -69,15 +69,14 @@ void Lista<T> :: borrarDato(int posicion){
 	Nodo<T>* auxBorrar = primero;
 	if(!listaVacia()){
 		if (posicion == 1){
-			primero = primero->obtenerSiguiente();
-		}
-		else{
-			Nodo<T>* anterior = obtenerNodo(posicion - 1);
-			auxBorrar = anterior->obtenerSiguiente();
-			anterior->cambiarSiguiente(auxBorrar->obtenerSiguiente());
-		}
-		cantidad--;
-		delete auxBorrar;
+		primero = primero->obtenerSiguiente();
+	}else{
+		Nodo<T>* anterior = obtenerNodo(posicion - 1);
+		auxBorrar = anterior->obtenerSiguiente();
+		anterior->cambiarSiguiente(auxBorrar->obtenerSiguiente());
+	}
+	cantidad--;
+	delete auxBorrar;
 	}
 }
 #endif
