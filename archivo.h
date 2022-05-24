@@ -19,11 +19,6 @@ class Archivo
 	public:
 		Archivo();
 		ifstream archivo;
-		string primero;
-		string nombreApellido;
-		string nacionalidad;
-		string anioNacimiento;
-		string anioFallecimiento;
 		void leerArchivoEscritor(Escritor* &escritor);
 		Lectura* LeerArchivoLecturas();
 		void mostrarArchivo();
