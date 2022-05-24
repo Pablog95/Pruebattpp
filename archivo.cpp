@@ -25,11 +25,11 @@ void Archivo :: leerArchivoEscritor(Escritor* &escritor) {
 		getline(archivo, anioNacimiento,'\n');
 		getline(archivo, anioFallecimiento,'\n');
 		
-    	cout << primero << endl;
-    	cout << nombreApellido << endl;
-    	cout << nacionalidad << endl;
-    	cout << anioNacimiento << endl;
-    	cout << anioFallecimiento << endl;
+    		cout << primero << endl;
+    		cout << nombreApellido << endl;
+    		cout << nacionalidad << endl;
+    		cout << anioNacimiento << endl;
+    		cout << anioFallecimiento << endl;
     	
 		escritor = new Escritor(nombreApellido,nacionalidad,anioNacimiento,anioFallecimiento);
 		}
