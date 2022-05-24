@@ -1,16 +1,15 @@
 #include "archivo.h"
-#include "cuento.h"
-#include "novela.h"
-#include "poema.h"
 #include <iostream>
 
 using namespace std;
 
-Archivo :: Archivo () {
+Archivo :: Archivo (Lista<Escritor>* listaEscritor, Lista<Lectura>* listaLectura) {
+	this->escritor = listaEscritor;
+	this->lectura = listaLectura;
 
 }
 
-void Archivo :: leerArchivoEscritor(Escritor* &escritor) {
+void Archivo :: leerArchivoEscritor(Lista<Escritor>* listaEscritor,Escritor* &escritor) {
     archivo.open("texto.txt", ios::in);
 
     if (archivo.fail()){
@@ -32,6 +31,7 @@ void Archivo :: leerArchivoEscritor(Escritor* &escritor) {
     		cout << anioFallecimiento << endl;
     	
 		escritor = new Escritor(nombreApellido,nacionalidad,anioNacimiento,anioFallecimiento);
+		listaEscritor-> agregarElemento(escritor);
 		}
 		
 	archivo.close();	     
