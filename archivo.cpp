@@ -1,4 +1,5 @@
 #include "archivo.h"
+
 #include <iostream>
 
 using namespace std;
@@ -9,12 +10,14 @@ Archivo :: Archivo (Lista<Escritor>* listaEscritor, Lista<Lectura>* listaLectura
 
 }
 
-void Archivo :: leerArchivoEscritor(Lista<Escritor>* listaEscritor,Escritor* &escritor) {
-    archivo.open("texto.txt", ios::in);
+void Archivo :: leerArchivoEscritor() {
+	Escritor* nuevoEscritor = 0;
+	string primero, nombreApellido, nacionalidad, anioNacimiento,anioFallecimiento, saltoLinea;
+    archivo.open("C:\\Users\\Pablo\\OneDrive\\Documentos\\Algoritmo y Programacion II\\prueba2tp2\\texto.txt", ios::in);
 
     if (archivo.fail()){
         cout << "No se puede abrir el archivo." << endl;
-        exit(1);//Sacar
+        exit(1);
     }
 	while (!archivo.eof()){
 
@@ -25,27 +28,28 @@ void Archivo :: leerArchivoEscritor(Lista<Escritor>* listaEscritor,Escritor* &es
 		getline(archivo, anioFallecimiento);
 		getline(archivo, saltoLinea);
 		
-    		cout << primero << endl;
-    		cout << nombreApellido << endl;
-    		cout << nacionalidad << endl;
-    		cout << anioNacimiento << endl;
-    		cout << anioFallecimiento << endl;
+    	cout << primero << endl;
+    	cout << nombreApellido << endl;
+    	cout << nacionalidad << endl;
+    	cout << anioNacimiento << endl;
+    	cout << anioFallecimiento << endl;
     	
-		escritor = new Escritor(nombreApellido,nacionalidad,anioNacimiento,anioFallecimiento);
-		listaEscritor-> agregarElemento(escritor);
+		nuevoEscritor = new Escritor(nombreApellido,nacionalidad,anioNacimiento,anioFallecimiento);
+		escritor-> agregarElemento(nuevoEscritor);
 		}
 		
 	archivo.close();	     
 }
 
-Lectura* Archivo :: LeerArchivoLecturas(){
+void Archivo :: LeerArchivoLecturas(){
+	Lectura* nuevaLectura = 0;
 	string narracion, titulo,referenciaAutor = "anonimo";
-	string anioPublicacion, minutos, datoSegunNarracion;
+	string anioPublicacion, minutos, datoSegunNarracion,tema,saltoLinea;
 	archivo.open("textoLecturas.txt",ios::in);
 	
 	if (archivo.fail()){
 		cout << "No se puede abrir el archivo." << endl;
-		exit(1);//Sacar
+		exit(1);
 	}
 	while (archivo.eof()){
 		getline(archivo, narracion);
@@ -56,25 +60,26 @@ Lectura* Archivo :: LeerArchivoLecturas(){
 		if(datoSegunNarracion == "HISTORICA"){
 			getline(archivo,tema);
 			getline(archivo,referenciaAutor);
-			return new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
+			nuevaLectura = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
 		}else{
 			getline(archivo,referenciaAutor);
 		}
 		getline(archivo,saltoLinea);
 		
+		
 		if (narracion == "N"){
 			cout << "Novela" << endl;
-			return new Novela(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion); 
+			 nuevaLectura = new Novela(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion); 
 		}
 		if (narracion == "C"){
 			cout << "Cuento" << endl;
-			return new Cuento(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion);
+			 nuevaLectura = new Cuento(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion);
 		}
 		if(narracion == "P"){
 			cout << "Poema" << endl;
-			return new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
+			 nuevaLectura = new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
 		}
-		
+		lectura-> agregarElemento(nuevaLectura);
 	}
 	
 }
