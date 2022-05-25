@@ -19,8 +19,8 @@ class Archivo
 	public:
 		Archivo();
 		ifstream archivo;
-		void leerArchivoEscritor(Escritor* &escritor);
-		Lectura* LeerArchivoLecturas();
+		void leerArchivoEscritor();
+		void LeerArchivoLecturas();
 		void mostrarArchivo();
 		//void crearObjeto();
 		//Escritor* procesarDatos();
