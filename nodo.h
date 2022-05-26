@@ -1,12 +1,13 @@
 #ifndef NODO_H
 #define NODO_H
 #include <iostream>
+#include "escritor.h"
+#include "lectura.h"
 
 using namespace std;
 
 template <class T>
 class Nodo
-
 {
 	private:
 		T* dato;
@@ -16,7 +17,7 @@ class Nodo
 		Nodo(T* _dato);
 		void cambiarSiguiente(Nodo* _siguiente);
 		Nodo<T>* obtenerSiguiente();
-		T obtenerDato();
+		T* obtenerDato();
 };
 
 template <class T>
@@ -33,7 +34,7 @@ Nodo<T>* Nodo<T> :: obtenerSiguiente(){
 	return siguiente;
 }
 template <class T>
-T Nodo<T>::obtenerDato(){
+T* Nodo<T>::obtenerDato(){
 	return dato;
 }
 
