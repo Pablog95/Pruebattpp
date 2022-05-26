@@ -1,12 +1,27 @@
 #ifndef MENU_H
 #define MENU_H
+#include "lista.h"
+#include "escritor.h"
+#include "lectura.h"
+#include "cuento.h"
+#include "poema.h"
+#include "historica.h"
+#include "novela.h"
+#include <iostream>
+
+using namespace std;
 
 class Menu
 {
 	public:
-		Menu(int _opcion);
+		Menu(Lista<Escritor>* escritores,Lista<Lectura>* lecturas);
 		void mostrarMenu();
-	protected:
+		void listaEscritores();
+		void agregarEscritores();
+		void agregarLectura();
+	private:
+		Lista<Escritor>* escritores;
+		Lista<Lectura>* lecturas;
 		int opcion;
 };
 
