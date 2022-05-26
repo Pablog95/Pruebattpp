@@ -20,7 +20,7 @@ class Lista
 		void borrarDato(int posicion);
 		void mostrarLista();
 		int obtenerTamanio();
-		T obtenerDato(int posicion);
+		T* obtenerDato(int posicion);
 		
 };
 
@@ -60,7 +60,7 @@ void Lista<T> :: agregarElemento(T* dato){
 }
 
 template <class T>
-T Lista<T> :: obtenerDato(int posicion){
+T* Lista<T> :: obtenerDato(int posicion){
 	Nodo<T>* aux = primero;
 	int contador = 1;
 	while (contador < posicion && aux->obtenerSiguiente()){
