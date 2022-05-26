@@ -33,18 +33,18 @@ void Menu :: mostrarMenu(){
 		cin >> opcion;
 		
 		switch(opcion){
-			case1: agregarLectura();break;//agregarElemento(T* dato),
-			case2:break;//borrarDato(int posicion)
-			case3: agregarEscritores();break;//agregarElemento(T* escritor)
-			case4:break;
-			case5: listaEscritores(); break;
-			case6:break;
-			case7:break;
-			case8:break;
-			case9:break;
-			case10:break;
-			case11:break;
-			case12:break;
+			case 1: agregarLectura();break;//agregarElemento(T* dato),
+			case 2:break;//borrarDato(int posicion)
+			case 3: agregarEscritores();break;//agregarElemento(T* escritor)
+			case 4:break;
+			case 5: listaEscritores(); break;
+			case 6:break;
+			case 7:break;
+			case 8:break;
+			case 9:break;
+			case 10:break;
+			case 11:break;
+			case 12:break;
 				
 		}
 		
