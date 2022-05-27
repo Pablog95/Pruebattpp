@@ -4,9 +4,13 @@
 
 using namespace std;
 
-Archivo :: Archivo () {
+Archivo :: Archivo (Lista<Escritor>* escritor,Lista<Lectura>* lecturas) {
+	/*
 	escritor = new Lista<Escritor>;
 	lectura = new Lista<Lectura>;
+	*/
+	this->escritor = escritor;
+	this->lectura = lecturas;
 
 }
 
