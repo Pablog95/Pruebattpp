@@ -41,7 +41,7 @@ void Archivo :: leerArchivoEscritor() {
 	archivo.close();	     
 }
 
-void Archivo :: LeerArchivoLecturas(){
+void Archivo :: leerArchivoLecturas(){
 	Lectura* nuevaLectura = 0;
 	string narracion, titulo,referenciaAutor = "anonimo";
 	string anioPublicacion, minutos, datoSegunNarracion,tema,saltoLinea;
