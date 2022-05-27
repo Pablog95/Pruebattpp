@@ -1,6 +1,9 @@
 #include "menu.h"
 
 #include <iostream>
+#include <ctime>
+#include <stdlib.h>
+
 
 using namespace std;
 
@@ -34,16 +37,16 @@ void Menu :: mostrarMenu(){
 		
 		switch(opcion){
 			case 1: agregarLectura();break;//agregarElemento(T* dato),
-			case 2:break;//borrarDato(int posicion)
+			case 2: borrarLectura ();break;//borrarDato(int posicion)
 			case 3: agregarEscritores();break;//agregarElemento(T* escritor)
-			case 4:break;
+			case 4:break;//cambiarDatoEscritor()
 			case 5: listaEscritores(); break;
-			case 6:break;
-			case 7:break;
-			case 8:break;
-			case 9:break;
-			case 10:break;
-			case 11:break;
+			case 6:sortearLectura(); break;//sortearLectura()
+			case 7: break; // listarLectura()
+			case 8:break;//listarLecturaAnios()
+			case 9:break;//listarlecturaEscritor()
+			case 10:break;//listarNovelaGenero()
+			case 11: break;//armarCola()
 			case 12:break;
 				
 		}
@@ -56,6 +59,7 @@ void Menu :: mostrarMenu(){
 void Menu :: listaEscritores(){
 	int tamanio = escritores->obtenerTamanio();
 	for (int i = 1; i < tamanio; i++){
+		cout << i << "-" << endl;
 		escritores->obtenerDato(i);
 	}
 }
@@ -116,4 +120,15 @@ void Menu :: agregarLectura(){
 	cin >> cantidadVersos;
 	Lectura* lecturas = new Poema(titulo, minutos, anio, autor, cantidadVersos);
 	}
+}
+void Menu :: borrarLectura(){
+	lecturas->borrarDato(1);
+	cout << "Una lectura fue borrada de la lista." << endl;
+}
+void Menu :: sortearLectura(){
+	
+	srand((unsigned) time(0));
+	int lecturaAleatoria = rand() % (10); //Cambiar el 10 por el tamaño de la lista.
+	 cout << lecturas->obtenerDato(lecturaAleatoria) << endl;;
+
 }
