@@ -1,5 +1,5 @@
 #include "archivo.h"
-
+#include <stdlib.h>
 #include <iostream>
 
 using namespace std;
@@ -17,10 +17,11 @@ Archivo :: Archivo (Lista<Escritor>* escritor,Lista<Lectura>* lecturas) {
 void Archivo :: leerArchivoEscritor() {
 	Escritor* nuevoEscritor = 0;
 	string primero, nombreApellido, nacionalidad, anioNacimiento,anioFallecimiento, saltoLinea;
-    archivo.open("C:\\Users\\Pablo\\OneDrive\\Documentos\\Algoritmo y Programacion II\\prueba2tp2\\texto.txt", ios::in);
+    archivo.open("textEscritores", ios::in);
 
     if (archivo.fail()){
         cout << "No se puede abrir el archivo." << endl;
+        
         exit(1);
     }
 	while (!archivo.eof()){
@@ -49,7 +50,7 @@ void Archivo :: leerArchivoLecturas(){
 	Lectura* nuevaLectura = 0;
 	string narracion, titulo,referenciaAutor = "anonimo";
 	string anioPublicacion, minutos, datoSegunNarracion,tema,saltoLinea;
-	archivo.open("textoLecturas.txt",ios::in);
+	archivo.open("lecturas.txt",ios::in);
 	
 	if (archivo.fail()){
 		cout << "No se puede abrir el archivo." << endl;
@@ -64,7 +65,8 @@ void Archivo :: leerArchivoLecturas(){
 		if(datoSegunNarracion == "HISTORICA"){
 			getline(archivo,tema);
 			getline(archivo,referenciaAutor);
-			nuevaLectura = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
+			
+			nuevaLectura = new Historica(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion,tema);
 		}else{
 			getline(archivo,referenciaAutor);
 		}
