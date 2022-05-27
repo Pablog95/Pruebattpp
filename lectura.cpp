@@ -1,6 +1,6 @@
 #include "Lectura.h"
 
-Lectura :: Lectura (string _titulo, unsigned int _minutos, int _anio, string _autor)
+Lectura :: Lectura (string _titulo, string _minutos, string _anio, string _autor)
 {
 	this->titulo = _titulo;
 	this->minutos = _minutos;
