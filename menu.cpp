@@ -105,7 +105,7 @@ void Menu :: agregarLectura(){
 		cout << "Ingrese el genero: " << endl;
 		cin >> genero;
 		if (genero == "historica"){
-			string tema;
+			char tema;
 			cout << "Escriba de que trata la novela historica: " << endl;
 			cin >> tema;
 			Lectura* lecturas = new Historica(titulo, minutos, anio, autor, genero, tema);
