@@ -1,16 +1,18 @@
 #include <iostream>
 #include "archivo.h"
+#include "menu.h"
 
 int main()
 {
+	Lista<Escritor> escritor;
+	Lista<Lectura> lecturas;
+	Archivo a1(& escritor, & lecturas);
+	Menu m1(& escritor, & lecturas);
+	m1.mostrarMenu();
+	a1.leerArchivoEscritor();
+	a1.leerArchivoLecturas();
+	m1.mostrarMenu();
 	
-	Archivo a1;
-	a1.mostrarArchivo();
-	//Escritor* escritor = a1.procesarDatos();
-
-    //escritor->mostrarDatos();
-    
-    //delete escritor;
     return 0;
     
 }
