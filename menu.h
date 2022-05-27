@@ -17,8 +17,10 @@ class Menu
 		Menu(Lista<Escritor>* escritores,Lista<Lectura>* lecturas);
 		void mostrarMenu();
 		void listaEscritores();
+		void borrarLectura ();
 		void agregarEscritores();
 		void agregarLectura();
+		void sortearLectura();
 	private:
 		Lista<Escritor>* escritores;
 		Lista<Lectura>* lecturas;
