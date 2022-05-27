@@ -20,7 +20,7 @@ class Archivo
 		Archivo();
 		ifstream archivo;
 		void leerArchivoEscritor();
-		void LeerArchivoLecturas();
+		void leerArchivoLecturas();
 		void mostrarArchivo();
 		//void crearObjeto();
 		//Escritor* procesarDatos();
