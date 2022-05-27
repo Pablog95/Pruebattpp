@@ -17,7 +17,7 @@ class Archivo
 		Lista<Escritor>* escritor;
 		Lista<Lectura>* lectura;
 	public:
-		Archivo();
+		Archivo(Lista<Escritor>* escritor,Lista<Lectura>* lecturas);
 		ifstream archivo;
 		void leerArchivoEscritor();
 		void leerArchivoLecturas();
