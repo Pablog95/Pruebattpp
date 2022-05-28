@@ -50,7 +50,7 @@ void Archivo :: leerArchivoEscritor() {
 
 void Archivo :: leerArchivoLecturas(){
 	Lectura* nuevaLectura = 0;
-	string narracion, titulo,referenciaAutor = "anonimo";
+	string narracion, titulo,referenciaAutor;
 	string anioPublicacion, minutos, datoSegunNarracion,tema,saltoLinea;
 	archivo.open("lecturas.txt",ios::in);
 	
@@ -65,15 +65,14 @@ void Archivo :: leerArchivoLecturas(){
             getline(archivo, minutos);
             getline(archivo, anioPublicacion);
             getline(archivo, datoSegunNarracion);
-            /*if (datoSegunNarracion == "HISTORICA") {
+            if (datoSegunNarracion == "HISTORICA") {
                 getline(archivo, tema);
                 getline(archivo, referenciaAutor);
 
                 nuevaLectura = new Historica(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion,tema);
             } else {
                 getline(archivo, referenciaAutor);
-            }*/
-            getline(archivo, referenciaAutor);
+            }
             getline(archivo, saltoLinea);
 
 

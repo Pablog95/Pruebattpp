@@ -1,7 +1,6 @@
 #ifndef HISTORICA_H
 #define HISTORICA_H
 #include <iostream>
-#include "lectura.h"
 #include "novela.h"
 
 using namespace std;

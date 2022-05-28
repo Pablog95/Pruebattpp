@@ -50,9 +50,6 @@ void Menu :: mostrarMenu(){
 			case 12:break;
 				
 		}
-		
-		
-		
 	}while (opcion != 12);
 }
 
@@ -104,15 +101,14 @@ void Menu :: agregarLectura(){
 		string genero;
 		cout << "Ingrese el genero: " << endl;
 		cin >> genero;
-		/*if (genero == "historica"){
-			char tema;
+		if (genero == "historica"){
+			string tema;
 			cout << "Escriba de que trata la novela historica: " << endl;
 			cin >> tema;
 			Lectura* lecturas = new Historica(titulo, minutos, anio, autor, genero, tema);
 		}else{
 			Lectura* lecturas = new Novela(titulo, minutos, anio, autor, genero);
-		}*/
-        Lectura* lecturas = new Novela(titulo, minutos, anio, autor, genero);
+		}
 		
 	}
 	if(tipo == "poema"){
