@@ -9,11 +9,6 @@ Escritor :: Escritor(string _nombreApellido, string _nacionalidad, string _anioN
 	this->nacionalidad = _nacionalidad;
 	this->anioNacimiento = _anioNacimiento;
 	this->anioFallecimiento = _anioFallecimiento;
-	//escritor = new Lista<Escritor*>(); 
-}
-
-Escritor :: Escritor(){
-
 }
 
 void Escritor :: mostrarDatos()

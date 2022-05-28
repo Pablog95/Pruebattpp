@@ -10,7 +10,7 @@ using namespace std;
 class Historica : public Novela
 {
 	private:
-		char tema;
+		string tema;
 	public:
 		Historica(string _titulo, string _minutos, string _anio, string _autor, string _genero, string tema);
 		

@@ -8,7 +8,6 @@ int main()
 	Lista<Lectura> lecturas;
 	Archivo a1(& escritor, & lecturas);
 	Menu m1(& escritor, & lecturas);
-	m1.mostrarMenu();
 	a1.leerArchivoEscritor();
 	a1.leerArchivoLecturas();
 	m1.mostrarMenu();

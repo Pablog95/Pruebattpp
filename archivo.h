@@ -21,14 +21,6 @@ class Archivo
 		ifstream archivo;
 		void leerArchivoEscritor();
 		void leerArchivoLecturas();
-		void mostrarArchivo();
-		//void crearObjeto();
-		//Escritor* procesarDatos();
-		/*
-		string nombreApellidoo();
-		string nacionalidadd();
-		int anioNacimientoo();
-		int anioFallecimientoo();*/
 };
 
 #endif

@@ -27,9 +27,9 @@ void Menu :: mostrarMenu(){
 		cout << "5- Listar los escritores."<< endl;
 		cout << "6- Sortear una lectura random para leer."<< endl;
 		cout << "7- Listar todas las lecturas."<< endl;
-		cout << "8- Listar las lecturas entre determinados años."<< endl;
+		cout << "8- Listar las lecturas entre determinados anios."<< endl;
 		cout << "9- Listar las lecturas de un determinado escritor"<< endl;
-		cout << "10- Listar las novelas de determinado género."<< endl;
+		cout << "10- Listar las novelas de determinado genero."<< endl;
 		cout << "11- Armar una cola ordenada."<< endl;
 		cout << "12- Salir.."<< endl;
 		cout << "--------------------------------------------" << endl;
@@ -104,14 +104,15 @@ void Menu :: agregarLectura(){
 		string genero;
 		cout << "Ingrese el genero: " << endl;
 		cin >> genero;
-		if (genero == "historica"){
+		/*if (genero == "historica"){
 			char tema;
 			cout << "Escriba de que trata la novela historica: " << endl;
 			cin >> tema;
 			Lectura* lecturas = new Historica(titulo, minutos, anio, autor, genero, tema);
 		}else{
 			Lectura* lecturas = new Novela(titulo, minutos, anio, autor, genero);
-		}
+		}*/
+        Lectura* lecturas = new Novela(titulo, minutos, anio, autor, genero);
 		
 	}
 	if(tipo == "poema"){

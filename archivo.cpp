@@ -17,10 +17,10 @@ Archivo :: Archivo (Lista<Escritor>* escritor,Lista<Lectura>* lecturas) {
 void Archivo :: leerArchivoEscritor() {
 	Escritor* nuevoEscritor = 0;
 	string primero, nombreApellido, nacionalidad, anioNacimiento,anioFallecimiento, saltoLinea;
-    archivo.open("textEscritores", ios::in);
+    archivo.open("textoEscritores.txt", ios::in);
 
     if (archivo.fail()){
-        cout << "No se puede abrir el archivo." << endl;
+        cout << "No se puede abrir el archivo E." << endl;
 
     }
     else{
@@ -55,7 +55,7 @@ void Archivo :: leerArchivoLecturas(){
 	archivo.open("lecturas.txt",ios::in);
 	
 	if (archivo.fail()){
-		cout << "No se puede abrir el archivo." << endl;
+		cout << "No se puede abrir el archivo L." << endl;
 	}
     else{
 
@@ -65,15 +65,15 @@ void Archivo :: leerArchivoLecturas(){
             getline(archivo, minutos);
             getline(archivo, anioPublicacion);
             getline(archivo, datoSegunNarracion);
-            if (datoSegunNarracion == "HISTORICA") {
+            /*if (datoSegunNarracion == "HISTORICA") {
                 getline(archivo, tema);
                 getline(archivo, referenciaAutor);
 
-                nuevaLectura = new Historica(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion,
-                                             tema);
+                nuevaLectura = new Historica(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion,tema);
             } else {
                 getline(archivo, referenciaAutor);
-            }
+            }*/
+            getline(archivo, referenciaAutor);
             getline(archivo, saltoLinea);
 
 
@@ -93,33 +93,6 @@ void Archivo :: leerArchivoLecturas(){
 
         }
     }
-}
-/*
-Escritor* Archivo :: procesarDatos(){
-	new Escritor (nombreApellido,nacionalidad,anioNacimiento,anioFallecimiento);
-}
-string Archivo :: nombreApellidoo(){
-	return nombreApellido;
+    archivo.close();
 }
 
-string Archivo :: nacionalidadd(){
-	return nacionalidad;
-}
-
-int Archivo :: anioNacimientoo(){
-	return atoi(anioNacimiento);
-}
-
-int Archivo :: anioFallecimientoo(){
-	return atoi(anioFallecimiento);
-}
-
-void Archivo :: mostrarArchivo() {
-
-    cout << primero << endl;
-    cout << nombreApellido << endl;
-    cout << nacionalidad << endl;
-    cout << anioNacimiento << endl;
-    cout << anioFallecimiento << endl;
-
-}*/
