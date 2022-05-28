@@ -4,3 +4,25 @@ Casa Tomada
 1951 
 Bestiario 
 (1)
+
+P
+Voy a dormir
+1
+1938
+14
+(4)
+
+N
+Frankestein
+1600
+1818
+TERROR
+(2)
+
+N
+Una columna de fuego
+4800
+2017
+HISTORICA
+Guerra de religiones en Europa en la segunda mitad del siglo XVI
+(5)
