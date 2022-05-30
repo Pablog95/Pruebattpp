@@ -18,12 +18,12 @@ void Menu :: mostrarMenu(){
 	
 	do{
 		cout << "          --->>> MENU <<<---   "<< endl;
-		cout << "			Elija una opcion: " << endl;
 		cout << "--------------------------------------------" << endl;
+		cout << "Elija una opcion: " << endl;
 		cout << "1- Agregar una nueva lectura a la lista."<< endl;
 		cout << "2- Quitar una lectura de la lista."<< endl;
 		cout << "3- Agregar un escritor."<< endl;
-		cout << "4- Cambiar la fecha de fallecimiento de un escritor"<< endl;
+		cout << "4- Cambiar la fecha de fallecimiento de un escritor(Antes de cambiar vea el orden de la lista -Opcion 5-)"<< endl;
 		cout << "5- Listar los escritores."<< endl;
 		cout << "6- Sortear una lectura random para leer."<< endl;
 		cout << "7- Listar todas las lecturas."<< endl;
@@ -39,10 +39,10 @@ void Menu :: mostrarMenu(){
 			case 1: agregarLectura();break;//agregarElemento(T* dato),
 			case 2: borrarLectura ();break;//borrarDato(int posicion)
 			case 3: agregarEscritores();break;//agregarElemento(T* escritor)
-			case 4:break;//cambiarDatoEscritor()
+			case 4: cambiarFallecimiento();break;//cambiarDatoEscritor()
 			case 5: listaEscritores(); break;
-			case 6:sortearLectura(); break;//sortearLectura()
-			case 7: break; // listarLectura()
+			case 6: sortearLectura(); break;//sortearLectura()
+			case 7: listaLectura(); break; // listarLectura()
 			case 8:break;//listarLecturaAnios()
 			case 9:break;//listarlecturaEscritor()
 			case 10:break;//listarNovelaGenero()
@@ -50,18 +50,34 @@ void Menu :: mostrarMenu(){
 			case 12:break;
 				
 		}
+		
+		
+		
 	}while (opcion != 12);
 }
 
 void Menu :: listaEscritores(){
+	
 	int tamanio = escritores->obtenerTamanio();
-	for (int i = 1; i < tamanio; i++){
-		cout << i << "-" << endl;
-		escritores->obtenerDato(i);
+	for (int i = 1; i <= tamanio; i++){
+		cout << i << ") ";
+		escritores->obtenerDato(i)->mostrarDatos();
+		cout << "-------" << endl;
 	}
 }
 
+void Menu :: listaLectura(){
+	int tamanio = lecturas->obtenerTamanio();
+	for (int i = 1; i <= tamanio; i++){
+		cout << i << ") ";
+		lecturas->obtenerDato(i)->mostrarLectura();
+		cout << "-------" << endl;
+	}
+}
+
+
 void Menu :: agregarEscritores(){
+	Escritor* nuevoEscritor = 0;
 	string nombreApellido, nacionalidad, anioNacimiento, anioFallecimiento;
 	cout << "Ingrese nombre y apellido: "<< endl;
 	cin >> nombreApellido;
@@ -71,10 +87,12 @@ void Menu :: agregarEscritores(){
 	cin >> anioNacimiento;
 	cout <<"Ingrese anio de fallecimiento: " << endl;
 	cin >> anioFallecimiento;
-	Escritor* escritores = new Escritor (nombreApellido, nacionalidad, anioNacimiento, anioFallecimiento);
+	nuevoEscritor = new Escritor (nombreApellido, nacionalidad, anioNacimiento, anioFallecimiento);
+	escritores-> agregarElemento(nuevoEscritor);
 }
 
 void Menu :: agregarLectura(){
+	Lectura* nuevaLectura = 0;
 	string tipo,titulo, minutos, anio, autor;
 	cout << "Ingrese el tipo de lectura. (CUENTO, NOVELA , HISTORICA, POEMA)" << endl;
 	cin >> tipo;
@@ -95,7 +113,7 @@ void Menu :: agregarLectura(){
 		string tituloCuento;
 		cout << "Ingrese el titulo del libro: " << endl;
 		cin >> titulo;
-		Lectura* lecturas = new Cuento(titulo,minutos, anio, autor,tituloCuento);
+		nuevaLectura = new Cuento(titulo,minutos, anio, autor,tituloCuento);
 	}
 	if(tipo == "novela"){
 		string genero;
@@ -105,9 +123,9 @@ void Menu :: agregarLectura(){
 			string tema;
 			cout << "Escriba de que trata la novela historica: " << endl;
 			cin >> tema;
-			Lectura* lecturas = new Historica(titulo, minutos, anio, autor, genero, tema);
+			nuevaLectura = new Historica(titulo, minutos, anio, autor, genero, tema);
 		}else{
-			Lectura* lecturas = new Novela(titulo, minutos, anio, autor, genero);
+			nuevaLectura = new Novela(titulo, minutos, anio, autor, genero);
 		}
 		
 	}
@@ -115,8 +133,9 @@ void Menu :: agregarLectura(){
 	string cantidadVersos;
 	cout << "Ingrese la cantidad de versos del poema: " << endl;
 	cin >> cantidadVersos;
-	Lectura* lecturas = new Poema(titulo, minutos, anio, autor, cantidadVersos);
+	nuevaLectura = new Poema(titulo, minutos, anio, autor, cantidadVersos);
 	}
+	lecturas-> agregarElemento(nuevaLectura);
 }
 void Menu :: borrarLectura(){
 	lecturas->borrarDato(1);
@@ -124,8 +143,16 @@ void Menu :: borrarLectura(){
 }
 void Menu :: sortearLectura(){
 	
-	srand((unsigned) time(0));
-	int lecturaAleatoria = rand() % (10); //Cambiar el 10 por el tamaño de la lista.
-	 cout << lecturas->obtenerDato(lecturaAleatoria) << endl;;
+		srand((unsigned) time(0));
+		int lecturaAleatoria = rand() % (10); //Cambiar el 10 por el tamaño de la lista.
+	 	cout << lecturas->obtenerDato(lecturaAleatoria) << endl;;
 
+}
+
+void Menu :: cambiarFallecimiento (){
+	int opcion;
+	cout << "Cambiar Fallecimiento: "<< endl;
+	cout << "Ingrese posicion del cambio de fecha: " << endl;
+	cin >> opcion;
+	escritores->obtenerDato(opcion)->cambiarFallecimiento();
 }
