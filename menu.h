@@ -21,6 +21,8 @@ class Menu
 		void agregarEscritores();
 		void agregarLectura();
 		void sortearLectura();
+		void listaLectura();
+		void cambiarFallecimiento();
 	private:
 		Lista<Escritor>* escritores;
 		Lista<Lectura>* lecturas;
