@@ -1,14 +1,18 @@
-#include "cuento.h"
+#ifndef CUENTO_H
+#define CUENTO_H
+#include <iostream>
+#include "lectura.h"
 
-Cuento :: Cuento(string _titulo, string _minutos, string _anio, string _autor, string _tituloLibro) :
-																	Lectura (_titulo, _minutos, _anio, _autor)
-																	
+using namespace std;
+
+class Cuento : public Lectura
 {
-	this->tituloLibro = _tituloLibro;
-}
+	public:
+		Cuento(string _titulo, string _minutos, string _anio, string _autor, string _tituloLibro);
+		void mostrarCuento();
+	private:
+		string tituloLibro;
+		
+};
 
-
-void Cuento:: mostrarCuento(){
-	mostrarLectura();
-	cout <<"Titulo del libro: " <<tituloLibro << endl;
-}
+#endif
