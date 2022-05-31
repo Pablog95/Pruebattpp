@@ -1,27 +1,26 @@
 #include "archivo.h"
-#include <stdlib.h>
 #include <iostream>
+#include <string>
+
 
 using namespace std;
 
-Archivo :: Archivo (Lista<Escritor>* escritor,Lista<Lectura>* lecturas) {
-	/*
-	escritor = new Lista<Escritor>;
-	lectura = new Lista<Lectura>;
-	*/
+Archivo :: Archivo (Lista<Escritor>* escritor,Lista<Lectura>* lectura) {
 	this->escritor = escritor;
-	this->lectura = lecturas;
+	this->lectura = lectura;
 
 }
 
 void Archivo :: leerArchivoEscritor() {
 	Escritor* nuevoEscritor = 0;
-	string primero, nombreApellido, nacionalidad, anioNacimiento,anioFallecimiento, saltoLinea;
-    archivo.open("textoEscritores.txt", ios::in);
+	string primero, nombreApellido, nacionalidad,anioNacimiento,anioFallecimiento, saltoLinea;
+	//int anioNacimiento, anioFallecimiento;
+	
+    archivo.open("C:\\Users\\Pablo\\OneDrive\\Documentos\\Algoritmo y Programacion II\\tp2\\textoescritor.txt", ios::in);
 
     if (archivo.fail()){
-        cout << "No se puede abrir el archivo E." << endl;
-
+        cout << "No se puede abrir el archivo escritor." << endl;
+        
     }else{
 	
 	while (!archivo.eof()){
@@ -99,11 +98,57 @@ void Archivo :: leerArchivoLecturas(){
 			cout << referenciaAutor << endl;
 			cout << saltoLinea << endl;
 			
-            }
-            lectura->agregarElemento(nuevaLectura);
-
-        }
-    }
-    archivo.close();
+			
+			/*
+			if(datoSegunNarracion == "HISTORICA"){
+				getline(archivoLectura,tema);
+				getline(archivoLectura,referenciaAutor);
+				cout << tema << endl;
+				cout << referenciaAutor << endl;
+				nuevaLectura = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
+				cout << "Entro en historica " << endl;
+				//lectura->agregarElemento(nuevaLectura);
+			}
+			getline(archivoLectura,referenciaAutor);
+			cout << referenciaAutor << endl;
+			getline(archivoLectura,saltoLinea);
+			cout << saltoLinea << endl;
+			
+		
+			if (narracion == "N"){
+				
+				if (datoSegunNarracion == "HISTORICA"){
+				getline(archivoLectura,tema);
+				getline(archivoLectura,referenciaAutor);
+				cout << tema << endl;
+				cout << referenciaAutor << endl;
+				nuevaHistorica = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
+				lectura->agregarElemento(nuevaLectura);
+				cout << "Entro en historica " << endl;
+					
+				}else{
+				cout << "Novela" << endl;
+				nuevaLectura = new Novela(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion); 
+				lectura->agregarElemento(nuevaLectura);
+				cout << "Entro en novela " << endl;
+				}
+			if (narracion == "C"){
+				cout << "Cuento" << endl;
+			 	Lectura* nuevoCuento = new Cuento(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion);
+			 	lectura->agregarElemento(nuevoCuento);
+				cout << "Entro en cuento " << endl;
+			
+			}else if(narracion == "P"){
+				cout << "Poema" << endl;
+			 	Lectura* nuevoPoema = new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
+			 	lectura->agregarElemento(nuevoPoema);
+				cout << "Entro en poema " << endl;
+			
+			getline(archivoLectura,saltoLinea);
+			cout << saltoLinea << endl;
+			}*/
+			//lectura->agregarElemento(nuevaLectura);
+		}
+	}
+	archivoLectura.close();
 }
-
