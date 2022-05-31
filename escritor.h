@@ -10,6 +10,7 @@ class Escritor
 		Escritor();
 		Escritor(string _nombreApellido, string _nacionalidad, string _anioNacimiento, string anioFallecimiento);
 		void mostrarDatos();
+		string obtenerNombreApellido();
 		void cambiarFallecimiento();
 		~Escritor(){};
 		

@@ -46,8 +46,8 @@ void Menu :: mostrarMenu(){
 			case 5: listaEscritores(); break;
 			case 6: sortearLectura(); break;//sortearLectura()
 			case 7: listaLectura(); break; // listarLectura()
-			case 8:break;//listarLecturaAnios()
-			case 9:break;//listarlecturaEscritor()
+			case 8:listarLecturaAnio();break;//listarLecturaAnios()
+			case 9: listarLecturaEscritor() ;break;//listarlecturaEscritor()
 			case 10:break;//listarNovelaGenero()
 			case 11: break;//armarCola()
 			case 12:break;
@@ -71,7 +71,7 @@ void Menu :: listaEscritores(){
 
 void Menu :: listaLectura(){
 	int tamanio = lecturas->obtenerTamanio();
-	for (int i = 1; i <= tamanio; i++){
+	for (int i = 0; i < tamanio; i++){
 		cout << i << ") ";
 		lecturas->obtenerDato(i)->mostrarLectura();
 		cout << "-------" << endl;
@@ -145,11 +145,47 @@ void Menu :: borrarLectura(){
 	cout << "Una lectura fue borrada de la lista." << endl;
 }
 void Menu :: sortearLectura(){
-	
+		int tamanio = lecturas->obtenerTamanio();
 		srand((unsigned) time(0));
-		int lecturaAleatoria = rand() % (10); //Cambiar el 10 por el tamaño de la lista.
+		int lecturaAleatoria = rand() % (tamanio); //Cambiar el 10 por el tamaño de la lista.
 	 	lecturas->obtenerDato(lecturaAleatoria)->mostrarLectura();
 
+}
+
+void Menu :: listarLecturaAnio(){
+	string anioUno, anioDos;
+	int tamanio = lecturas->obtenerTamanio();
+	cout << "Ingrese dos anios: " << endl;
+	cout << "anio 1: " << endl;
+	cin >> anioUno;
+	cout << "anio 2: " << endl;
+	cin >> anioDos;
+	for (int i = 0; i < tamanio; i++){
+		cout << "ingresa al for." << endl;
+		string anioLectura= lecturas->obtenerDato(i)->obtenerAnio();
+		if (anioUno < anioLectura && anioLectura < anioDos){
+			cout << "Ingresa al If"<< endl;
+			lecturas->obtenerDato(i)->mostrarLectura();
+		}
+	}
+	
+}
+
+void Menu :: listarLecturaEscritor(){
+	string ingresoAutor;
+	int tamanio = escritores->obtenerTamanio();
+	cout << "Ingrese un autor: " << endl;
+	cout << "Autor: " << endl;
+	cin >> ingresoAutor;
+	for (int i = 0; i < tamanio; i++){
+		cout << "ingresa al for." << endl;
+		string nombreEscritor= escritores->obtenerDato(i)->obtenerNombreApellido();
+		if (ingresoAutor == nombreEscritor){
+			cout << "Ingresa al If"<< endl;
+			escritores->obtenerDato(i)->mostrarDatos();
+		}
+	}
+	
 }
 
 void Menu :: cambiarFallecimiento (){

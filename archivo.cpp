@@ -1,7 +1,9 @@
 #include "archivo.h"
+#include "cola.h"
 #include <iostream>
 #include <string>
 
+enum genero{DRAMA = 1, COMEDIA, FICCION, SUSPENSO, TERROR, ROMANTICA, HISTORICA};
 
 using namespace std;
 
@@ -74,20 +76,24 @@ void Archivo :: leerArchivoLecturas(){
 				Lectura* nuevoPoema = new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
 			 	lectura->agregarElemento(nuevoPoema);
 			}
-			/*
+			
 			if(narracion == "N"){
+				Novela* nuevaHistorica = 0;
 				if (datoSegunNarracion == "HISTORICA"){
 					getline(archivoLectura,tema);
 					getline(archivoLectura, referenciaAutor);
 					cout << "Entro en Historica." << endl;
-					Novela* nuevaHistorica = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
+					nuevaHistorica = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
+					cout << "Crea clase historica" << endl;
+					lectura->agregarElemento(nuevaHistorica);
 				}else{
 					getline(archivoLectura, referenciaAutor);
 					cout << "Entro en Novela" << endl;
 					Lectura* nuevaNovela = new Novela(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
+
 			 		lectura->agregarElemento(nuevaNovela);
 			 	}
-			}*/
+			 }
 			getline(archivoLectura, saltoLinea);
 			
 			cout << narracion << endl;
@@ -152,3 +158,7 @@ void Archivo :: leerArchivoLecturas(){
 	}
 	archivoLectura.close();
 }
+/*
+string Archivo :: genero(){
+	return datoSegunNarracion[genero];
+}*/

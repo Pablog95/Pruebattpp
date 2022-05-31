@@ -25,3 +25,7 @@ void Escritor :: cambiarFallecimiento(){
 	anioFallecimiento = anioFallecimientoNuevo;
 	cout << "Se cambio la fecha de fallecimiento." << endl;
 }
+
+string Escritor ::  obtenerNombreApellido(){
+	return nombreApellido;
+}

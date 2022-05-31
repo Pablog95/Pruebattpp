@@ -9,16 +9,17 @@ class Cola
 		Cola();
 		~Cola();
 		bool colaVacia();
-		void agregarCola(T d);
+		void agregarCola(T* dato);
 		T bajaCola();
 	private:
+		T* dato;
 		Nodo<T>* primero;
 		Nodo<T>* ultimo;
 		
 };
 
 template <class T>
-Cola<T> :: cola(){
+Cola<T> :: Cola(){
 	primero = 0;
 	ultimo = 0;
 }
@@ -35,9 +36,9 @@ bool Cola<T> :: colaVacia(){
 	return (primero == 0);
 }
 
-templeate <class T>
-void Cola<T> :: agregarCola(T d){
-	T* dato= new T(d);
+template <class T>
+void Cola<T> :: agregarCola(T* dato){
+	//T* dato= new T(dato);
 	Nodo<T>* nodo = new Nodo<T>(dato);
 	if(this->colaVacia()){
 		primero = nodo;
@@ -47,7 +48,7 @@ void Cola<T> :: agregarCola(T d){
 	}
 	ultimo = nodo;
 }
-
+template <class T>
 T Cola<T> :: bajaCola(){
 	if(primero == ultimo)
 		ultimo = 0;

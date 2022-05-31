@@ -2,7 +2,7 @@
 #define CUENTO_H
 #include <iostream>
 #include "lectura.h"
-
+#include "novela.h"
 using namespace std;
 
 class Cuento : public Lectura
