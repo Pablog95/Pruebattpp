@@ -14,6 +14,7 @@ class Lectura
 	public:
 		Lectura (string _titulo, string _minutos, string _anio, string _autor);
 		virtual void mostrarDatos();
+		string obtenerAnio();
 		virtual ~Lectura(){};
 };
 
