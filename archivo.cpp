@@ -22,8 +22,26 @@ void Archivo :: leerArchivoEscritor() {
     if (archivo.fail()){
         cout << "No se puede abrir el archivo E." << endl;
 
-    }
-    else{
+    }else{
+	
+	while (!archivo.eof()){
+
+		getline(archivo, primero);
+		getline(archivo, nombreApellido);
+		getline(archivo, nacionalidad);
+		getline(archivo, anioNacimiento);
+		//anioNacimiento = anioNacimientoStr;
+		getline(archivo, anioFallecimiento);
+		//anioFallecimiento = anioFallecimientoStr;
+		getline(archivo, saltoLinea);
+		
+		nuevoEscritor = new Escritor(nombreApellido,nacionalidad, anioNacimiento, anioFallecimiento);
+		escritor-> agregarElemento(nuevoEscritor);
+		}
+	}
+		
+	archivo.close();	     
+}
 
 void Archivo :: leerArchivoLecturas(){
 	string narracion, titulo,referenciaAutor = "anonimo";
