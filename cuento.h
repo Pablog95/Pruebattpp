@@ -9,6 +9,7 @@ class Cuento : public Lectura
 {
 	public:
 		Cuento(string _titulo, string _minutos, string _anio, string _autor, string _tituloLibro);
+		void mostrarCuento();
 	private:
 		string tituloLibro;
 		

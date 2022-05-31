@@ -4,8 +4,8 @@
 CPP      = g++.exe
 CC       = gcc.exe
 WINDRES  = windres.exe
-OBJ      = main.o archivo.o escritor.o archivolecturas.o lista.o nodo.o lectura.o cuento.o novela.o historica.o menu.o poema.o
-LINKOBJ  = main.o archivo.o escritor.o archivolecturas.o lista.o nodo.o lectura.o cuento.o novela.o historica.o menu.o poema.o
+OBJ      = main.o archivo.o escritor.o lectura.o cuento.o novela.o historica.o menu.o poema.o
+LINKOBJ  = main.o archivo.o escritor.o lectura.o cuento.o novela.o historica.o menu.o poema.o
 LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
 INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -32,15 +32,6 @@ archivo.o: archivo.cpp
 
 escritor.o: escritor.cpp
 	$(CPP) -c escritor.cpp -o escritor.o $(CXXFLAGS)
-
-archivolecturas.o: archivolecturas.cpp
-	$(CPP) -c archivolecturas.cpp -o archivolecturas.o $(CXXFLAGS)
-
-lista.o: lista.cpp
-	$(CPP) -c lista.cpp -o lista.o $(CXXFLAGS)
-
-nodo.o: nodo.cpp
-	$(CPP) -c nodo.cpp -o nodo.o $(CXXFLAGS)
 
 lectura.o: lectura.cpp
 	$(CPP) -c lectura.cpp -o lectura.o $(CXXFLAGS)

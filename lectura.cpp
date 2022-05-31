@@ -1,4 +1,7 @@
 #include "Lectura.h"
+#include <iostream>
+
+using namespace std;
 
 Lectura :: Lectura (string _titulo, string _minutos, string _anio, string _autor)
 {
@@ -8,11 +11,11 @@ Lectura :: Lectura (string _titulo, string _minutos, string _anio, string _autor
 	this->autor = _autor;
 }
 
-void Lectura :: mostrarDatos(){
+void Lectura :: mostrarLectura(){
 	cout << "Titulo: " << titulo << endl;
-	cout << "Minutos: " << titulo << endl;
-	cout << "AÃ±o: " << titulo << endl;
-	cout << "Autor: " << titulo << endl;
+	cout << "Minutos: " << minutos << endl;
+	cout << "Año: " << anio << endl;
+	cout << "Autor: " << autor << endl;
 	
 }
 

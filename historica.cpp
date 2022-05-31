@@ -5,3 +5,9 @@ Historica :: Historica (string _titulo, string _minutos, string _anio, string _a
 {
 	this->tema = _tema;
 }
+
+void Historica :: mostrarHistorica(){
+	mostrarLectura();
+	mostrarNovela();
+	cout << "Tema: " << endl;
+}

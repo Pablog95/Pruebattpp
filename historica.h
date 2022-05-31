@@ -2,6 +2,7 @@
 #define HISTORICA_H
 #include <iostream>
 #include "novela.h"
+#include "lectura.h"
 
 using namespace std;
 
@@ -12,6 +13,7 @@ class Historica : public Novela
 		string tema;
 	public:
 		Historica(string _titulo, string _minutos, string _anio, string _autor, string _genero, string tema);
+		void mostrarHistorica();
 		
 		
 };

@@ -13,7 +13,7 @@ class Lectura
 		string autor;
 	public:
 		Lectura (string _titulo, string _minutos, string _anio, string _autor);
-		virtual void mostrarDatos();
+		virtual void mostrarLectura();
 		string obtenerAnio();
 		virtual ~Lectura(){};
 };

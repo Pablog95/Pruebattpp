@@ -147,7 +147,7 @@ void Menu :: borrarLectura(){
 void Menu :: sortearLectura(){
 	
 		srand((unsigned) time(0));
-		int lecturaAleatoria = rand() % (10); //Cambiar el 10 por el tamaÃ±o de la lista.
+		int lecturaAleatoria = rand() % (10); //Cambiar el 10 por el tamaño de la lista.
 	 	lecturas->obtenerDato(lecturaAleatoria)->mostrarLectura();
 
 }
