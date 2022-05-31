@@ -17,9 +17,10 @@ Menu :: Menu (Lista<Escritor>* escritores,Lista<Lectura>* lecturas){
 void Menu :: mostrarMenu(){
 	
 	do{
-		cout << "          --->>> MENU <<<---   "<< endl;
-		cout << "--------------------------------------------" << endl;
-		cout << "Elija una opcion: " << endl;
+		cout << "----------------------------------------------------------------------------------------------------------" << endl;
+		cout << "          				--->>> MENU <<<---   "<< endl;
+		cout << "----------------------------------------------------------------------------------------------------------" << endl;
+		cout << "Elija una opcion: \n" << endl;
 		cout << "1- Agregar una nueva lectura a la lista."<< endl;
 		cout << "2- Quitar una lectura de la lista."<< endl;
 		cout << "3- Agregar un escritor."<< endl;
@@ -31,8 +32,10 @@ void Menu :: mostrarMenu(){
 		cout << "9- Listar las lecturas de un determinado escritor"<< endl;
 		cout << "10- Listar las novelas de determinado genero."<< endl;
 		cout << "11- Armar una cola ordenada."<< endl;
-		cout << "12- Salir.."<< endl;
-		cout << "--------------------------------------------" << endl;
+		cout << "12- Salir."<< endl;
+		cout << "----------------------------------------------------------------------------------------------------------" << endl;
+		cout << "----------------------------------------------------------------------------------------------------------" << endl;
+		cout << "Opcion: ";
 		cin >> opcion;
 		
 		switch(opcion){
@@ -145,7 +148,7 @@ void Menu :: sortearLectura(){
 	
 		srand((unsigned) time(0));
 		int lecturaAleatoria = rand() % (10); //Cambiar el 10 por el tamaño de la lista.
-	 	cout << lecturas->obtenerDato(lecturaAleatoria) << endl;;
+	 	lecturas->obtenerDato(lecturaAleatoria)->mostrarLectura();
 
 }
 
