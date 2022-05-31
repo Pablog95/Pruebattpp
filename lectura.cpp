@@ -11,7 +11,11 @@ Lectura :: Lectura (string _titulo, string _minutos, string _anio, string _autor
 void Lectura :: mostrarDatos(){
 	cout << "Titulo: " << titulo << endl;
 	cout << "Minutos: " << titulo << endl;
-	cout << "Año: " << titulo << endl;
+	cout << "AÃ±o: " << titulo << endl;
 	cout << "Autor: " << titulo << endl;
 	
+}
+
+string Lectura :: obtenerAnio(){
+	return anio;
 }
