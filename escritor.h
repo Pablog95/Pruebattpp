@@ -16,6 +16,7 @@ class Escritor
     public:
 		Escritor(string _nombreApellido, string _nacionalidad, string _anioNacimiento, string anioFallecimiento);
 		void mostrarDatos();
+		void cambiarFallecimiento();
 		~Escritor(){};
 
 };
