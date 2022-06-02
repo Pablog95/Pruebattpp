@@ -1,16 +1,14 @@
 #include "menu.h"
-
 #include <iostream>
 #include <ctime>
 #include <stdlib.h>
 
-
 using namespace std;
 
-
-Menu :: Menu (Lista<Escritor>* escritores,Lista<Lectura>* lecturas){
+Menu :: Menu (Lista<Escritor>* escritores,Lista<Lectura>* lecturas, Cola<Lectura>* colaLectura){
 	this->escritores = escritores;
 	this->lecturas = lecturas;
+	this->colaLectura = colaLectura;
 	
 }
 
@@ -39,6 +37,7 @@ void Menu :: mostrarMenu(){
 		cin >> opcion;
 		
 		switch(opcion){
+			
 			case 1: agregarLectura();break;//agregarElemento(T* dato),
 			case 2: borrarLectura ();break;//borrarDato(int posicion)
 			case 3: agregarEscritores();break;//agregarElemento(T* escritor)
@@ -46,19 +45,26 @@ void Menu :: mostrarMenu(){
 			case 5: listaEscritores(); break;
 			case 6: sortearLectura(); break;//sortearLectura()
 			case 7: listaLectura(); break; // listarLectura()
-			case 8:break;//listarLecturaAnios()
-			case 9:break;//listarlecturaEscritor()
-			case 10:break;//listarNovelaGenero()
-			case 11: break;//armarCola()
+			case 8: listarLecturaAnio();break;//listarLecturaAnios()
+			case 9: listarLecturaEscritor() ;break;//listarlecturaEscritor()
+			case 10:listarNovelaGenero();break;//listarNovelaGenero()
+			case 11: mostrarCola(); break;//armarCola()
 			case 12:break;
 				
-		}
-		
-		
+		}		
 		
 	}while (opcion != 12);
 }
-
+void Menu :: mostrarCola(){
+	int corte = 1;
+	cout << "Entra 1" << endl;
+	while(colaLectura->colaVacia() || corte == 0){
+		cout << "Entra 2" << endl;
+		colaLectura->obtenerDatoCola()->mostrar();
+		cout << "¿Quiere seguir mostrando cola? (Marque 0 para cortar)" << endl;
+		cin >> corte;
+	}
+}
 void Menu :: listaEscritores(){
 	
 	int tamanio = escritores->obtenerTamanio();
@@ -70,11 +76,31 @@ void Menu :: listaEscritores(){
 }
 
 void Menu :: listaLectura(){
+	if (lecturas->listaVacia()){
+		cout << "La lista esta vacia." << endl;
+	}
 	int tamanio = lecturas->obtenerTamanio();
 	for (int i = 1; i <= tamanio; i++){
 		cout << i << ") ";
-		lecturas->obtenerDato(i)->mostrarLectura();
+		lecturas->obtenerDato(i)->mostrar();
 		cout << "-------" << endl;
+	}
+}
+
+void Menu :: listarNovelaGenero(){
+	int tamanio = lecturas->obtenerTamanio();
+	string genero;
+	cout << "Ingrese el genero que quiere listar: " << endl;
+	cin >> genero;
+	int contador = 0;
+	for (int i = 1 ; i <= tamanio; i++){
+		if(genero == lecturas->obtenerDato(i)->obtenerGenero()){
+			lecturas->obtenerDato(i)->mostrar();
+			contador++;
+		}
+	}
+	if (contador == 0){
+	cout << "No se encontro ninguna novela del genero elegido."<< endl;
 	}
 }
 
@@ -99,7 +125,7 @@ void Menu :: agregarLectura(){
 	string tipo,titulo, minutos, anio, autor;
 	cout << "Ingrese el tipo de lectura. (CUENTO, NOVELA , HISTORICA, POEMA)" << endl;
 	cin >> tipo;
-	cout << "Ingrese el titulo del cuento:"<< endl;
+	cout << "Ingrese el titulo de la lectura:"<< endl;
 	cin >> titulo;
 	cout << "Ingrese cuantos minutos dura: "<< endl;
 	cin >> minutos;
@@ -145,11 +171,48 @@ void Menu :: borrarLectura(){
 	cout << "Una lectura fue borrada de la lista." << endl;
 }
 void Menu :: sortearLectura(){
-	
+		int tamanio = lecturas->obtenerTamanio();
 		srand((unsigned) time(0));
-		int lecturaAleatoria = rand() % (10); //Cambiar el 10 por el tamaÃ±o de la lista.
-	 	lecturas->obtenerDato(lecturaAleatoria)->mostrarLectura();
+		int lecturaAleatoria = rand() % (tamanio);
+	 	lecturas->obtenerDato(lecturaAleatoria)->mostrar();
 
+}
+
+void Menu :: listarLecturaAnio(){
+	string anioUno, anioDos;
+	int tamanio = lecturas->obtenerTamanio();
+	cout << "Ingrese dos anios: " << endl;
+	cout << "anio 1: " << endl;
+	cin >> anioUno;
+	cout << "anio 2: " << endl;
+	cin >> anioDos;
+	
+	if (anioUno<anioDos){
+	
+	for (int i = 0; i < tamanio; i++){
+		cout << "ingresa al for." << endl;
+		string anioLectura = lecturas->obtenerDato(i)->obtenerAnio();
+		if (anioUno < anioLectura && anioLectura < anioDos){
+			cout << "Ingresa al If"<< endl;
+			lecturas->obtenerDato(i)->mostrar();
+		}
+	}
+	}
+	
+}
+
+void Menu :: listarLecturaEscritor(){
+	string ingresoAutor;
+	int tamanio = escritores->obtenerTamanio();
+	cout << "Ingrese un autor: " << endl;
+	cout << "Autor: " << endl;
+	cin >> ingresoAutor;
+	for (int i = 0; i < tamanio; i++){
+		string nombreEscritor= escritores->obtenerDato(i)->obtenerNombreApellido();
+		if (ingresoAutor == nombreEscritor){
+			escritores->obtenerDato(i)->mostrarDatos();
+		}
+	}	
 }
 
 void Menu :: cambiarFallecimiento (){

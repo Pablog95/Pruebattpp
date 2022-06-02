@@ -10,13 +10,12 @@ Escritor :: Escritor(string _nombreApellido, string _nacionalidad, string _anioN
 	this->anioNacimiento = _anioNacimiento;
 	this->anioFallecimiento = _anioFallecimiento;
 }
-
 void Escritor :: mostrarDatos()
 {
-	cout << nombreApellido<<endl;
-	cout << nacionalidad<<endl;
-	cout << anioNacimiento<<endl;
-	cout << anioFallecimiento<<endl;
+	cout <<"Nombre y apellido: " <<nombreApellido<<endl;
+	cout <<"Nacionalidad: " << nacionalidad << endl;
+	cout <<"Anio de nacimiento: "<< anioNacimiento<<endl;
+	cout << "Anio de Fallecimiento: " <<anioFallecimiento<<endl;
 };
 
 void Escritor :: cambiarFallecimiento(){
@@ -25,4 +24,8 @@ void Escritor :: cambiarFallecimiento(){
 	cin >> anioFallecimientoNuevo;
 	anioFallecimiento = anioFallecimientoNuevo;
 	cout << "Se cambio la fecha de fallecimiento." << endl;
+}
+
+string Escritor ::  obtenerNombreApellido(){
+	return nombreApellido;
 }
