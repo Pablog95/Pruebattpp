@@ -19,6 +19,7 @@ class Archivo
 	private:
 		Lista<Escritor>* escritor;
 		Lista<Lectura>* lectura;
+		Cola<Lectura>* colaLectura;
 		//string datoSegunNarracion;
 	public:
 		Archivo(Lista<Escritor>* escritor,Lista<Lectura>* lectura);

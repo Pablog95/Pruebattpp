@@ -3,13 +3,14 @@
 #include <iostream>
 #include <string>
 
-enum genero{DRAMA = 1, COMEDIA, FICCION, SUSPENSO, TERROR, ROMANTICA, HISTORICA};
+//enum genero{DRAMA = 1, COMEDIA, FICCION, SUSPENSO, TERROR, ROMANTICA, HISTORICA};
 
 using namespace std;
 
 Archivo :: Archivo (Lista<Escritor>* escritor,Lista<Lectura>* lectura) {
 	this->escritor = escritor;
 	this->lectura = lectura;
+	colaLectura = new Cola<Lectura>;
 
 }
 
@@ -60,105 +61,46 @@ void Archivo :: leerArchivoLecturas(){
 			getline(archivoLectura,titulo);
 			getline(archivoLectura,minutos);
 			getline(archivoLectura,anioPublicacion);
-			getline(archivoLectura,datoSegunNarracion);
+
 			
 			
 			if (narracion == "C"){
-				cout << "Entro en cuento" << endl;
+				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
 				Lectura* nuevoCuento = new Cuento(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion);
 			 	lectura->agregarElemento(nuevoCuento);
+			 	colaLectura->agregarCola(nuevoCuento);
 			}
 			
 			if(narracion == "P"){
-				cout << "Entro en poema" << endl;
+				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
 				Lectura* nuevoPoema = new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
 			 	lectura->agregarElemento(nuevoPoema);
+			 	colaLectura->agregarCola(nuevoPoema);
 			}
 			
 			if(narracion == "N"){
-				Novela* nuevaHistorica = 0;
+				getline(archivoLectura,datoSegunNarracion);
+				cout << datoSegunNarracion<< endl;
 				if (datoSegunNarracion == "HISTORICA"){
 					getline(archivoLectura,tema);
+					cout << tema << endl;
 					getline(archivoLectura, referenciaAutor);
-					cout << "Entro en Historica." << endl;
-					nuevaHistorica = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
-					cout << "Crea clase historica" << endl;
+					cout << referenciaAutor << endl;
+					Lectura* nuevaHistorica = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
 					lectura->agregarElemento(nuevaHistorica);
+					colaLectura->agregarCola(nuevaHistorica);
 				}else{
 					getline(archivoLectura, referenciaAutor);
-					cout << "Entro en Novela" << endl;
 					Lectura* nuevaNovela = new Novela(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
-
 			 		lectura->agregarElemento(nuevaNovela);
+			 		colaLectura->agregarCola(nuevaNovela);
 			 	}
 			 }
 			getline(archivoLectura, saltoLinea);
 			
-			cout << narracion << endl;
-			cout << titulo << endl;
-			cout << minutos << endl;
-			cout << anioPublicacion << endl;
-			cout << datoSegunNarracion << endl;
-			cout << referenciaAutor << endl;
-			cout << saltoLinea << endl;
-			
-			
-			/*
-			if(datoSegunNarracion == "HISTORICA"){
-				getline(archivoLectura,tema);
-				getline(archivoLectura,referenciaAutor);
-				cout << tema << endl;
-				cout << referenciaAutor << endl;
-				nuevaLectura = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
-				cout << "Entro en historica " << endl;
-				//lectura->agregarElemento(nuevaLectura);
-			}
-			getline(archivoLectura,referenciaAutor);
-			cout << referenciaAutor << endl;
-			getline(archivoLectura,saltoLinea);
-			cout << saltoLinea << endl;
-			
-		
-			if (narracion == "N"){
-				
-				if (datoSegunNarracion == "HISTORICA"){
-				getline(archivoLectura,tema);
-				getline(archivoLectura,referenciaAutor);
-				cout << tema << endl;
-				cout << referenciaAutor << endl;
-				nuevaHistorica = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
-				lectura->agregarElemento(nuevaLectura);
-				cout << "Entro en historica " << endl;
-					
-				}else{
-				cout << "Novela" << endl;
-				nuevaLectura = new Novela(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion); 
-				lectura->agregarElemento(nuevaLectura);
-				cout << "Entro en novela " << endl;
-				}
-			if (narracion == "C"){
-				cout << "Cuento" << endl;
-			 	Lectura* nuevoCuento = new Cuento(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion);
-			 	lectura->agregarElemento(nuevoCuento);
-				cout << "Entro en cuento " << endl;
-			
-			}else if(narracion == "P"){
-				cout << "Poema" << endl;
-			 	Lectura* nuevoPoema = new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
-			 	lectura->agregarElemento(nuevoPoema);
-				cout << "Entro en poema " << endl;
-			
-			getline(archivoLectura,saltoLinea);
-			cout << saltoLinea << endl;
-			}*/
-			//lectura->agregarElemento(nuevaLectura);
 		}
 	}
 	archivoLectura.close();
 }
-/*
-string Archivo :: genero(){
-	return datoSegunNarracion[genero];
-}*/

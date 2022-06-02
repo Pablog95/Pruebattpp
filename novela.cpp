@@ -6,7 +6,15 @@ Novela :: Novela(string _titulo, string _minutos, string _anio, string _autor, s
 	this->genero = _genero;
 }
 
-void Novela :: mostrarNovela(){
-	mostrarLectura();
+void Novela :: mostrar(){
+	//mostrarLectura();
+	cout << "Titulo: " << obtenerTitulo() <<endl;
+	cout << "Minutos: " << obtenerMinutos() << endl;
+	cout << "Anio: " << obtenerAnio() << endl;
+	cout << "Autor: " << obtenerAutor() << endl;
 	cout << "Genero de la novela: " << genero << endl;
 }
+
+string Novela :: obtenerGenero(){
+	return this->genero;
+} 

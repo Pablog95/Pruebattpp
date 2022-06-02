@@ -7,6 +7,7 @@
 #include "poema.h"
 #include "historica.h"
 #include "novela.h"
+#include "cola.h"
 #include <iostream>
 
 using namespace std;
@@ -14,7 +15,7 @@ using namespace std;
 class Menu
 {
 	public:
-		Menu(Lista<Escritor>* escritores,Lista<Lectura>* lecturas);
+		Menu(Lista<Escritor>* escritores,Lista<Lectura>* lecturas,Cola<Lectura>* colaLectura);
 		void mostrarMenu();
 		void listaEscritores();
 		void borrarLectura ();
@@ -25,9 +26,12 @@ class Menu
 		void listarLecturaAnio();
 		void listarLecturaEscritor();
 		void cambiarFallecimiento();
+		void listarNovelaGenero();
+		void mostrarCola();
 	private:
 		Lista<Escritor>* escritores;
 		Lista<Lectura>* lecturas;
+		Cola<Lectura>* colaLectura;
 		int opcion;
 };
 

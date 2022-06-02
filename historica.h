@@ -13,7 +13,8 @@ class Historica : public Novela
 		string tema;
 	public:
 		Historica(string _titulo, string _minutos, string _anio, string _autor, string _genero, string _tema);
-		void mostrarHistorica();
+		void mostrar();
+		string obtenerGenero();
 		
 		
 };

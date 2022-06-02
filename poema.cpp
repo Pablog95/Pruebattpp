@@ -4,7 +4,15 @@ Poema :: Poema(string _titulo, string _minutos, string _anio,string _autor, stri
 	this->cantidadVersos = _cantidadVersos;
 }
 
-void Poema :: mostrarPoema(){
-	mostrarLectura();
+void Poema :: mostrar(){
+	//mostrarLectura();
+	cout << "Titulo: " << obtenerTitulo() <<endl;
+	cout << "Minutos: " << obtenerMinutos() << endl;
+	cout << "Anio: " << obtenerAnio() << endl;
+	cout << "Autor: " << obtenerAutor() << endl;
 	cout << "Cantidad de versos: " << cantidadVersos << endl;
+}
+
+string Poema :: obtenerGenero(){
+	return "" ;
 }

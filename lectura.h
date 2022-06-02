@@ -15,8 +15,13 @@ class Lectura
 		//NombreApellido* autor;
 	public:
 		Lectura (string _titulo, string _minutos, string _anio, string _autor);
-		virtual void mostrarLectura();
+		//virtual void mostrarLectura() = 0;
+		string obtenerTitulo();
+		string obtenerMinutos();
 		string obtenerAnio();
+		string obtenerAutor();
+		virtual void mostrar() = 0;
+		virtual string obtenerGenero() = 0;
 		virtual ~Lectura(){};
 };
 

@@ -9,7 +9,8 @@ class Poema : public Lectura
 {
 	public:
 		Poema(string _titulo, string _minutos, string _anio,string _autor, string _cantidadVersos);
-		void mostrarPoema();
+		void mostrar();
+		string obtenerGenero();
 	private:
 		string cantidadVersos;
 		

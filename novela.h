@@ -9,7 +9,8 @@ class Novela : public Lectura
 {
 	public:
 		Novela(string _titulo, string _minutos, string _anio, string _autor, string _genero);
-		void mostrarNovela();
+		void mostrar();
+		string obtenerGenero();
 		virtual ~Novela(){};
 	protected:
 		string genero;
