@@ -1,6 +1,4 @@
 #include "lectura.h"
-#include "lista.h"
-#include "nodo.h"
 #include <iostream>
 
 using namespace std;
@@ -12,23 +10,6 @@ Lectura :: Lectura (string _titulo, unsigned int _minutos, int _anio, string _au
 	this->anio = _anio;
 	this->autor = _autor;
 }
-
-/*int Lectura :: compararLectura ()
-{
-    int dato = 0;
-
-    for (int i = 1; i <= tamanio; i++)
-    {
-        if (lectura->obtenerDato(i)->obtenerAnio() > anioLectura && lectura->obtenerDato(i) != NULL){
-            dato = 1;
-        }
-        else if(lectura->obtenerDato(i)->obtenerAnio() < anioLectura && lectura->obtenerDato(i) != NULL){
-            dato = -1;
-        }
-    }
-    return dato;
-}*/
-
 
 string Lectura :: obtenerTitulo(){
 	return titulo;

@@ -5,7 +5,7 @@ Poema :: Poema(string _titulo, unsigned int _minutos, int _anio,string _autor, s
 }
 
 void Poema :: mostrar(){
-	//mostrarLectura();
+
 	cout << "Titulo: " << obtenerTitulo() <<endl;
 	cout << "Minutos: " << obtenerMinutos() << endl;
 	cout << "Anio: " << obtenerAnio() << endl;

@@ -13,6 +13,7 @@ class Lista
 		Nodo<T>* cursor;
 		int cantidad;
 		Nodo<T>* obtenerNodo(int posicion);
+
 	public:
 		Lista();
 		void agregarElemento(T* dato);
@@ -26,8 +27,6 @@ class Lista
         ~Lista();
 		
 };
-
-
 
 template<class T>
 Lista<T> :: Lista(){
@@ -46,6 +45,7 @@ template<class T>
 bool Lista<T> :: listaVacia(){
 	return (cantidad == 0);
 }
+
 template <class T> 
 void Lista <T> :: agregarElemento(T* dato){
 	Nodo<T>* nuevo = new Nodo<T>(dato);
@@ -124,6 +124,7 @@ void Lista<T> :: borrarDato(int posicion){
 		delete auxBorrar;
 	}
 }
+
 template <class T>
 void Lista<T> :: mostrarLista(){
 	

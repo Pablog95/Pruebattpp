@@ -5,18 +5,19 @@
 template <class T>
 class Cola
 {
-	public:
+    private:
+        T* dato;
+        Nodo<T>* primero;
+        Nodo<T>* ultimo;
+
+
+    public:
 		Cola();
 		~Cola();
 		bool colaVacia();
 		void agregarCola(T* dato);
 		T* obtenerDatoCola();
 		T* bajaCola();
-	private:
-		T* dato;
-		Nodo<T>* primero;
-		Nodo<T>* ultimo;
-		
 };
 
 template <class T>

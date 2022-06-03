@@ -14,7 +14,14 @@ using namespace std;
 
 class Menu
 {
-	public:
+
+    private:
+        Lista<Escritor>* escritores;
+        Lista<Lectura>* lecturas;
+        Cola<Lectura>* colaLectura;
+        int opcion;
+
+    public:
 		Menu(Lista<Escritor>* escritores,Lista<Lectura>* lecturas,Cola<Lectura>* colaLectura);
 		void mostrarMenu();
 		void listaEscritores();
@@ -28,12 +35,7 @@ class Menu
 		void cambiarFallecimiento();
 		void listarNovelaGenero();
 		void mostrarCola();
-        string hacerMinuscula(string);
-	private:
-		Lista<Escritor>* escritores;
-		Lista<Lectura>* lecturas;
-		Cola<Lectura>* colaLectura;
-		int opcion;
+
 };
 
 #endif

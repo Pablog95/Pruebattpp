@@ -15,6 +15,5 @@ void Cuento:: mostrar(){
 	cout << "Minutos: " << obtenerMinutos() << endl;
 	cout << "Anio: " << obtenerAnio() << endl;
 	cout << "Autor: " << obtenerAutor() << endl;
-	//mostrarLectura();
 	cout <<"Titulo del libro: " <<tituloLibro << endl;
 }

@@ -11,6 +11,7 @@ class Historica : public Novela
 {
 	private:
 		char* tema;
+
 	public:
 		Historica(string _titulo, unsigned int _minutos, int _anio, string _autor, string _genero, string _tema);
 		void mostrar();

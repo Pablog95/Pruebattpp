@@ -42,7 +42,6 @@ void Archivo :: leerArchivoEscritor() {
 		}
 
 	}
-	cout << "creo lista escritores"<< endl;
 
 	archivo.close();	     
 }
@@ -100,7 +99,7 @@ void Archivo :: leerArchivoLecturas(){
 					int posicion = compararLectura(nuevaHistorica->obtenerAnio(),tamanio);
 
 					lectura->agregarElemento(nuevaHistorica, posicion, tamanio);
-                    cout << "hola" << endl;
+
 					
 					colaLectura->agregarCola(nuevaHistorica);
 				}else{
@@ -115,9 +114,9 @@ void Archivo :: leerArchivoLecturas(){
 			 }
 			getline(archivoLectura, saltoLinea);
 		}
-        cout << "hola" << endl;
+
 	}
-    cout << "hola" << endl;
+
 	archivoLectura.close();
 }
 

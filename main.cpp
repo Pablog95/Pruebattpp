@@ -1,4 +1,3 @@
-#include <iostream>
 #include "archivo.h"
 #include "menu.h"
 

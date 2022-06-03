@@ -14,7 +14,7 @@ Historica::~Historica(){
     delete[] tema;
 }
 void Historica :: mostrar(){
-    cout << "Titulo: " << obtenerTitulo() <<endl;
+    cout << "Titulo: " << obtenerTitulo() << endl;
     cout << "Minutos: " << obtenerMinutos() << endl;
     cout << "Anio: " << obtenerAnio() << endl;
     cout << "Autor: " << obtenerAutor() << endl;
