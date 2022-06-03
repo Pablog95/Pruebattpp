@@ -33,6 +33,8 @@ class Historica : public Novela
         char* obtenerTema();
 
         // Destructor
+	//PRE: -
+	//POST: Libera memoria del char Tema y recursos.
         ~Historica();
 		
 		
