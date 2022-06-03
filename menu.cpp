@@ -65,10 +65,11 @@ void Menu :: mostrarCola(){
     string salida;
 
 	cout << "Entra 1" << endl;
-	while(salida != "s"){
+	while(salida != "s" && !colaLectura->colaVacia()){
 		cout << "Entra 2" << endl;
-		cout << colaLectura->obtenerDatoCola() <<endl;
-        cout << "Presione (s) para salir" << endl;
+		colaLectura->obtenerDatoCola()->mostrar();
+        cout << "Presione (s) si quiere dejar de eliminar lecturas."  << endl;
+        colaLectura->bajaCola();
         cin >> salida;
 	}
 }
