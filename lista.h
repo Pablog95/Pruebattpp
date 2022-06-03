@@ -15,16 +15,43 @@ class Lista
 		Nodo<T>* obtenerNodo(int posicion);
 
 	public:
+	    	// Constructor
+    		// PRE: Ninguna
+    		// POST: Lista vacia.
 		Lista();
+	
+		//Destructor.
+		//PRE: Lista creada.
+		//POST: Libera los recursos de la lista.
+	        ~Lista();
+	
+		//PRE: Lista creada.
+		//POST: Agrega un elemento.
 		void agregarElemento(T* dato);
+	
+		//PRE: Lista creada.
+		//POST: Agrega un elemento.
 		void agregarElemento(T* dato, int lug, int pos);
+	
+		//PRE: Lista creada
+		//POST: TRUE si es vacia, de lo contrario FALSE
 		bool listaVacia();
+	
+		//PRE: Lista creada y no vacia.
+		//POST: Elimina un dato en determinada posicion.
 		void borrarDato(int posicion);
+
+		//PRE: Lista creada.
+		//POST: Muestra lista.
 		void mostrarLista();
+	
+		//PRE: Lista creada.
+		//POST: Devuelve tamanio de la lista.
 		int obtenerTamanio();
+
+		//PRE: Lista creada, no vacia.
+		//POST: Devuelve el dato del puntero en esa posicion.
 		T* obtenerDato(int posicion);
-		void ordenarLista();
-        ~Lista();
 		
 };
 
