@@ -28,6 +28,7 @@ class Menu
 		void cambiarFallecimiento();
 		void listarNovelaGenero();
 		void mostrarCola();
+        string hacerMinuscula(string);
 	private:
 		Lista<Escritor>* escritores;
 		Lista<Lectura>* lecturas;

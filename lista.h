@@ -15,7 +15,6 @@ class Lista
 		Nodo<T>* obtenerNodo(int posicion);
 	public:
 		Lista();
-		~Lista();
 		void agregarElemento(T* dato);
 		void agregarElemento(T* dato, int lug, int pos);
 		bool listaVacia();
@@ -24,6 +23,7 @@ class Lista
 		int obtenerTamanio();
 		T* obtenerDato(int posicion);
 		void ordenarLista();
+        ~Lista();
 		
 };
 
@@ -37,7 +37,7 @@ Lista<T> :: Lista(){
 
 template<class T>
 Lista<T>::~Lista(){
-	while (!listaVacia()){
+	while (!this -> listaVacia()){
 		this->borrarDato(1);
 	}
 }
@@ -60,47 +60,31 @@ template<class T>
 void Lista<T> :: agregarElemento(T* dato, int lug ,int pos){
 	Nodo<T>* nuevo = new Nodo<T>(dato);
 	cout << "entro" << endl;
-	if (lug == 1)
-	{
-		cout << "Agrega adelante<---------------------------------------------------------------------------" << endl;
-		nuevo->cambiarSiguiente(primero);
-		primero = nuevo;
 
-	}else if (lug == -1){
-		//Nodo<T>* anterior = obtenerNodo(pos - 1);
-		Nodo<T>* anterior = obtenerNodo(pos);
-		nuevo->cambiarSiguiente(anterior->obtenerSiguiente());
-		anterior->cambiarSiguiente(nuevo);
-		cout << "Agrega atras<-------------" << endl;
-	}
+    if (lug == 0) {
+        nuevo->cambiarSiguiente(primero);
+        primero = nuevo;
+    }
+
+    else {
+        if (lug == 1) {
+            nuevo->cambiarSiguiente(primero);
+            primero = nuevo;
+
+        } if (lug == -1) {
+
+            Nodo<T> *anterior = obtenerNodo(pos);
+            nuevo->cambiarSiguiente(anterior->obtenerSiguiente());
+            anterior->cambiarSiguiente(nuevo);
+            cout << "holaaaa" << endl;
+        }
+
+    }
 	cout << "elemento agregado." << endl;
-	/*
-	if (!(this->listaVacia())){
-		nuevo->cambiarSiguiente(primero);
-		primero = nuevo;
-	}*/ 
+
 	cantidad++;
 }
-/*
-template <class T>
-void Lista<T> :: ordenarLista(){
-	Nodo<T> *p = primero;
-	Nodo <T> *aux = NULL;
-	Lectura *lectura;
-	while(p->obtenerSiguiente()!=NULL){
-		aux = p->obtenerSiguiente();
-		while (aux !=NULL){
-			if (p->obtenerDato()->obtenerAnio() > aux->obtenerDato()->obtenerAnio()){
-			lectura = aux->obtenerDato();
-			aux->agregarElemento(p->obtenerDato());
-			p->agregarElemento(lectura);
-			}
-			aux= aux->obtenerSiguiente();
-		}
-		p = p->obtenerSiguiente();
-	}
-}
-*/
+
 template <class T>
 T* Lista<T> :: obtenerDato(int posicion){
 	Nodo<T>* aux = primero;

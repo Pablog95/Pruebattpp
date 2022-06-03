@@ -56,13 +56,10 @@ void Menu :: mostrarMenu(){
 	}while (opcion != 12);
 }
 void Menu :: mostrarCola(){
-	int corte = 1;
 	cout << "Entra 1" << endl;
-	while(colaLectura->colaVacia() || corte == 0){
+	while(!colaLectura->colaVacia()){
 		cout << "Entra 2" << endl;
-		colaLectura->obtenerDatoCola()->mostrar();
-		cout << "¿Quiere seguir mostrando cola? (Marque 0 para cortar)" << endl;
-		cin >> corte;
+		cout << colaLectura->obtenerDatoCola() <<endl;
 	}
 }
 void Menu :: listaEscritores(){
@@ -107,7 +104,8 @@ void Menu :: listarNovelaGenero(){
 
 void Menu :: agregarEscritores(){
 	Escritor* nuevoEscritor = 0;
-	string nombreApellido, nacionalidad, anioNacimiento, anioFallecimiento;
+	string nombreApellido, nacionalidad;
+    int anioNacimiento, anioFallecimiento;
 	cout << "Ingrese nombre y apellido: "<< endl;
 	cin >> nombreApellido;
 	cout <<"Ingrese nacionalidad: " << endl;
@@ -122,7 +120,10 @@ void Menu :: agregarEscritores(){
 
 void Menu :: agregarLectura(){
 	Lectura* nuevaLectura = 0;
-	string tipo,titulo, minutos, anio, autor;
+	string tipo,titulo, autor;
+    unsigned int minutos;
+    int anio;
+
 	cout << "Ingrese el tipo de lectura. (CUENTO, NOVELA , HISTORICA, POEMA)" << endl;
 	cin >> tipo;
 	cout << "Ingrese el titulo de la lectura:"<< endl;
@@ -133,7 +134,7 @@ void Menu :: agregarLectura(){
 	cin >> anio;
 	cout << "Ingrese el autor: " << endl;
 	cin >> autor;
-	
+
 	while(tipo != "cuento" && tipo != "novela" && tipo != "poema" && tipo != "historica"){
 		cout << "La lectura no es valida."<< endl;
 		cin >> tipo;
@@ -179,7 +180,7 @@ void Menu :: sortearLectura(){
 }
 
 void Menu :: listarLecturaAnio(){
-	string anioUno, anioDos;
+	int anioUno, anioDos;
 	int tamanio = lecturas->obtenerTamanio();
 	cout << "Ingrese dos anios: " << endl;
 	cout << "anio 1: " << endl;
@@ -191,7 +192,7 @@ void Menu :: listarLecturaAnio(){
 	
 	for (int i = 0; i < tamanio; i++){
 		cout << "ingresa al for." << endl;
-		string anioLectura = lecturas->obtenerDato(i)->obtenerAnio();
+		int anioLectura = lecturas->obtenerDato(i)->obtenerAnio();
 		if (anioUno < anioLectura && anioLectura < anioDos){
 			cout << "Ingresa al If"<< endl;
 			lecturas->obtenerDato(i)->mostrar();

@@ -1,6 +1,6 @@
 #include "cuento.h"
 
-Cuento :: Cuento(string _titulo, string _minutos, string _anio, string _autor, string _tituloLibro) :
+Cuento :: Cuento(string _titulo, unsigned int _minutos, int _anio, string _autor, string _tituloLibro) :
 																	Lectura (_titulo, _minutos, _anio, _autor)
 																	
 {

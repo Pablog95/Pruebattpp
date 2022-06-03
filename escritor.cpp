@@ -1,10 +1,11 @@
 #include "escritor.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 
-Escritor :: Escritor(string _nombreApellido, string _nacionalidad, string _anioNacimiento, string _anioFallecimiento){
+Escritor :: Escritor(string _nombreApellido, string _nacionalidad, int _anioNacimiento, int _anioFallecimiento){
 	this->nombreApellido = _nombreApellido;
 	this->nacionalidad = _nacionalidad;
 	this->anioNacimiento = _anioNacimiento;
@@ -19,7 +20,7 @@ void Escritor :: mostrarDatos()
 };
 
 void Escritor :: cambiarFallecimiento(){
-	string anioFallecimientoNuevo;
+	int anioFallecimientoNuevo;
 	cout << "Ingrese el anio nuevo de fallecimiento: " << endl;
 	cin >> anioFallecimientoNuevo;
 	anioFallecimiento = anioFallecimientoNuevo;

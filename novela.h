@@ -8,7 +8,7 @@ using namespace std;
 class Novela : public Lectura
 {
 	public:
-		Novela(string _titulo, string _minutos, string _anio, string _autor, string _genero);
+		Novela(string _titulo, unsigned int _minutos, int _anio, string _autor, string _genero);
 		void mostrar();
 		string obtenerGenero();
 		virtual ~Novela(){};

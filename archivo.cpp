@@ -7,17 +7,16 @@
 
 using namespace std;
 
-Archivo :: Archivo (Lista<Escritor>* escritor,Lista<Lectura>* lectura) {
+Archivo :: Archivo (Lista<Escritor>* escritor,Lista<Lectura>* lectura, Cola<Lectura>* colaLectura) {
 	this->escritor = escritor;
 	this->lectura = lectura;
-	colaLectura = new Cola<Lectura>;
+	this -> colaLectura = colaLectura;
 
 }
 
 void Archivo :: leerArchivoEscritor() {
 	Escritor* nuevoEscritor = 0;
 	string primero, nombreApellido, nacionalidad,anioNacimiento,anioFallecimiento, saltoLinea;
-	//int anioNacimiento, anioFallecimiento;
 	
     archivo.open("textoescritor.txt", ios::in);
 
@@ -32,16 +31,19 @@ void Archivo :: leerArchivoEscritor() {
 		getline(archivo, nombreApellido);
 		getline(archivo, nacionalidad);
 		getline(archivo, anioNacimiento);
-		//anioNacimiento = anioNacimientoStr;
+        int AniodeNacimiento = stoi(anioNacimiento);
 		getline(archivo, anioFallecimiento);
-		//anioFallecimiento = anioFallecimientoStr;
+        int AniodeFallecimiento = stoi(anioFallecimiento);
 		getline(archivo, saltoLinea);
-		
-		nuevoEscritor = new Escritor(nombreApellido,nacionalidad, anioNacimiento, anioFallecimiento);
+
+		nuevoEscritor = new Escritor(nombreApellido,nacionalidad,AniodeNacimiento,AniodeFallecimiento);
 		escritor-> agregarElemento(nuevoEscritor);
+
 		}
+
 	}
-	cout << "creo lista escritores"<< endl;	
+	cout << "creo lista escritores"<< endl;
+
 	archivo.close();	     
 }
 
@@ -63,29 +65,30 @@ void Archivo :: leerArchivoLecturas(){
 			getline(archivoLectura, narracion);
 			getline(archivoLectura,titulo);
 			getline(archivoLectura,minutos);
+            unsigned int minutosLibro = stoi(minutos);
 			getline(archivoLectura,anioPublicacion);
+            int anioDePublicacion = stoi(anioPublicacion);
 			
 			if (narracion == "C"){
 				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
-				Lectura* nuevoCuento = new Cuento(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion);
+				Lectura* nuevoCuento = new Cuento(titulo,minutosLibro,anioDePublicacion,referenciaAutor,datoSegunNarracion);
 				int posicion = compararLectura(nuevoCuento->obtenerAnio(),tamanio);
-				cout << "Posicion<---------------------------/" << posicion<< endl;
+
 				lectura->agregarElemento(nuevoCuento,posicion,tamanio);
-			 	//lectura->agregarElemento(nuevoCuento);
-			 	//colaLectura->agregarCola(nuevoCuento);
+
+			 	colaLectura->agregarCola(nuevoCuento);
 			}
 			
 			if(narracion == "P"){
 				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
-				Lectura* nuevoPoema = new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
+				Lectura* nuevoPoema = new Poema(titulo, minutosLibro, anioDePublicacion, referenciaAutor, datoSegunNarracion);
 				int posicion = compararLectura(nuevoPoema->obtenerAnio(),tamanio);
-				cout << "Posicion<---------------------------/" << posicion << endl;
+
 				lectura->agregarElemento(nuevoPoema,posicion,tamanio);
-				//posicion= comparar(nuevoPoema->obtenerAnio())
-			 	//lectura->agregarElemento(nuevoPoema, pos);
-			 	//colaLectura->agregarCola(nuevoPoema);
+
+			 	colaLectura->agregarCola(nuevoPoema);
 			}
 			
 			if(narracion == "N"){
@@ -93,69 +96,43 @@ void Archivo :: leerArchivoLecturas(){
 				if (datoSegunNarracion == "HISTORICA"){
 					getline(archivoLectura,tema);
 					getline(archivoLectura, referenciaAutor);
-					Lectura* nuevaHistorica = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
+					Lectura* nuevaHistorica = new Historica(titulo,minutosLibro,anioDePublicacion,referenciaAutor, datoSegunNarracion,tema);
 					int posicion = compararLectura(nuevaHistorica->obtenerAnio(),tamanio);
-					cout << "Posicion<---------------------------/" << posicion<< endl;
+
 					lectura->agregarElemento(nuevaHistorica, posicion, tamanio);
+                    cout << "hola" << endl;
 					
-					//colaLectura->agregarCola(nuevaHistorica);
+					colaLectura->agregarCola(nuevaHistorica);
 				}else{
 					getline(archivoLectura, referenciaAutor);
-					Lectura* nuevaNovela = new Novela(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
+					Lectura* nuevaNovela = new Novela(titulo, minutosLibro, anioDePublicacion, referenciaAutor, datoSegunNarracion);
 					int posicion = compararLectura(nuevaNovela->obtenerAnio(),tamanio);
-					cout << "Posicion<---------------------------/" << posicion<< endl;
+
 					lectura->agregarElemento(nuevaNovela,posicion, tamanio);
-			 		//lectura->agregarElemento(nuevaNovela);
-			 		//colaLectura->agregarCola(nuevaNovela);
+
+			 		colaLectura->agregarCola(nuevaNovela);
 			 	}
 			 }
 			getline(archivoLectura, saltoLinea);
 		}
+        cout << "hola" << endl;
 	}
-	cout << "Crea lista lectura" << endl;
+    cout << "hola" << endl;
 	archivoLectura.close();
 }
 
-int Archivo :: compararLectura(string anioLectura, int tamanio)
+int Archivo :: compararLectura(int anioLectura, int tamanio)
 {
-	cout << "comparar" << endl;
 	int dato = 0;
-	//int i = 0;
 
-	if(lectura->listaVacia()){
-		cout << "if lista vacia "<< endl;
-		dato = 1;
-		//i++;
-	}
-
-	//while(i <tamanio && !lectura->listaVacia())
 	for (int i = 1; i <= tamanio; i++)
 	{
-		cout << "entra al for " << endl;
 		if (lectura->obtenerDato(i)->obtenerAnio() > anioLectura && lectura->obtenerDato(i) != NULL){
-			cout << "else if 1" << endl;
-			cout << "-----------" << endl;
-			cout << anioLectura << endl;
-			cout << "----------"<< endl;
-			cout << "----------"<< endl;
-			lectura->obtenerDato(i)->mostrar();
 			dato = 1;
-			cout << dato << endl;
-		}else if(lectura->obtenerDato(i)->obtenerAnio() < anioLectura && lectura->obtenerDato(i) != NULL){
-			cout << "-----------" << endl;
-			cout << "else if 2" << endl;
-			cout << anioLectura << endl;
-			cout << "----------"<< endl;
-			cout << "----------"<< endl;
-			lectura->obtenerDato(i)->mostrar();
-
-			dato = -1;
-			cout << dato << endl;
 		}
-		cout << "sale al for " << endl;
-	//i++;
+        else if(lectura->obtenerDato(i)->obtenerAnio() < anioLectura && lectura->obtenerDato(i) != NULL){
+            dato = -1;
+		}
 	}
-	cout << dato << "Dato salida " << endl;
-	cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<< endl;
 	return dato;
 }
