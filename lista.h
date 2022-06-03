@@ -17,7 +17,7 @@ class Lista
 		Lista();
 		~Lista();
 		void agregarElemento(T* dato);
-		void agregarElemento(T* dato, int pos);
+		void agregarElemento(T* dato, int lug, int pos);
 		bool listaVacia();
 		void borrarDato(int posicion);
 		void mostrarLista();
@@ -57,18 +57,18 @@ void Lista <T> :: agregarElemento(T* dato){
 }
 
 template<class T>
-void Lista<T> :: agregarElemento(T* dato, int pos){
+void Lista<T> :: agregarElemento(T* dato, int lug ,int pos){
 	Nodo<T>* nuevo = new Nodo<T>(dato);
 	cout << "entro" << endl;
-	if (pos == 1)
+	if (lug == 1)
 	{
 		cout << "Agrega adelante<---------------------------------------------------------------------------" << endl;
 		nuevo->cambiarSiguiente(primero);
 		primero = nuevo;
 
-	}else if (pos == -1){
+	}else if (lug == -1){
 		//Nodo<T>* anterior = obtenerNodo(pos - 1);
-		Nodo<T>* anterior = obtenerNodo(primero);
+		Nodo<T>* anterior = obtenerNodo(pos);
 		nuevo->cambiarSiguiente(anterior->obtenerSiguiente());
 		anterior->cambiarSiguiente(nuevo);
 		cout << "Agrega atras<-------------" << endl;

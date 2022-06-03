@@ -19,7 +19,7 @@ void Archivo :: leerArchivoEscritor() {
 	string primero, nombreApellido, nacionalidad,anioNacimiento,anioFallecimiento, saltoLinea;
 	//int anioNacimiento, anioFallecimiento;
 	
-    archivo.open("C:\\Users\\Pablo\\OneDrive\\Documentos\\Algoritmo y Programacion II\\tp2\\textoescritor.txt", ios::in);
+    archivo.open("textoescritor.txt", ios::in);
 
     if (archivo.fail()){
         cout << "No se puede abrir el archivo escritor." << endl;
@@ -49,7 +49,7 @@ void Archivo :: leerArchivoLecturas(){
 	string narracion, titulo,referenciaAutor = "anonimo";
 	string anioPublicacion, minutos, datoSegunNarracion,tema,saltoLinea;
 	
-	archivoLectura.open("C:\\Users\\Pablo\\OneDrive\\Documentos\\Algoritmo y Programacion II\\tp2\\textolectura.txt", ios::in);
+	archivoLectura.open("textolectura.txt", ios::in);
 	
 	if (archivoLectura.fail()){
 		cout << "No se puede abrir el archivo lectura." << endl;
@@ -57,6 +57,9 @@ void Archivo :: leerArchivoLecturas(){
 	}else{
 	
 		while (!archivoLectura.eof()){
+
+            int tamanio = lectura->obtenerTamanio();
+
 			getline(archivoLectura, narracion);
 			getline(archivoLectura,titulo);
 			getline(archivoLectura,minutos);
@@ -66,9 +69,9 @@ void Archivo :: leerArchivoLecturas(){
 				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
 				Lectura* nuevoCuento = new Cuento(titulo,minutos,anioPublicacion,referenciaAutor,datoSegunNarracion);
-				int posicion = compararLectura(nuevoCuento->obtenerAnio());
+				int posicion = compararLectura(nuevoCuento->obtenerAnio(),tamanio);
 				cout << "Posicion<---------------------------/" << posicion<< endl;
-				lectura->agregarElemento(nuevoCuento,posicion);
+				lectura->agregarElemento(nuevoCuento,posicion,tamanio);
 			 	//lectura->agregarElemento(nuevoCuento);
 			 	//colaLectura->agregarCola(nuevoCuento);
 			}
@@ -77,9 +80,9 @@ void Archivo :: leerArchivoLecturas(){
 				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
 				Lectura* nuevoPoema = new Poema(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
-				int posicion = compararLectura(nuevoPoema->obtenerAnio());
+				int posicion = compararLectura(nuevoPoema->obtenerAnio(),tamanio);
 				cout << "Posicion<---------------------------/" << posicion << endl;
-				lectura->agregarElemento(nuevoPoema,posicion);
+				lectura->agregarElemento(nuevoPoema,posicion,tamanio);
 				//posicion= comparar(nuevoPoema->obtenerAnio())
 			 	//lectura->agregarElemento(nuevoPoema, pos);
 			 	//colaLectura->agregarCola(nuevoPoema);
@@ -91,17 +94,17 @@ void Archivo :: leerArchivoLecturas(){
 					getline(archivoLectura,tema);
 					getline(archivoLectura, referenciaAutor);
 					Lectura* nuevaHistorica = new Historica(titulo,minutos,anioPublicacion,referenciaAutor, datoSegunNarracion,tema);
-					int posicion = compararLectura(nuevaHistorica->obtenerAnio());
+					int posicion = compararLectura(nuevaHistorica->obtenerAnio(),tamanio);
 					cout << "Posicion<---------------------------/" << posicion<< endl;
-					lectura->agregarElemento(nuevaHistorica, posicion);
+					lectura->agregarElemento(nuevaHistorica, posicion, tamanio);
 					
 					//colaLectura->agregarCola(nuevaHistorica);
 				}else{
 					getline(archivoLectura, referenciaAutor);
 					Lectura* nuevaNovela = new Novela(titulo, minutos, anioPublicacion, referenciaAutor, datoSegunNarracion);
-					int posicion = compararLectura(nuevaNovela->obtenerAnio());
+					int posicion = compararLectura(nuevaNovela->obtenerAnio(),tamanio);
 					cout << "Posicion<---------------------------/" << posicion<< endl;
-					lectura->agregarElemento(nuevaNovela,posicion);
+					lectura->agregarElemento(nuevaNovela,posicion, tamanio);
 			 		//lectura->agregarElemento(nuevaNovela);
 			 		//colaLectura->agregarCola(nuevaNovela);
 			 	}
@@ -113,22 +116,21 @@ void Archivo :: leerArchivoLecturas(){
 	archivoLectura.close();
 }
 
-int Archivo :: compararLectura(string anioLectura)
+int Archivo :: compararLectura(string anioLectura, int tamanio)
 {
-	int tamanio = lectura->obtenerTamanio();
 	cout << "comparar" << endl;
 	int dato = 0;
 	//int i = 0;
-	
+
 	if(lectura->listaVacia()){
 		cout << "if lista vacia "<< endl;
 		dato = 1;
 		//i++;
 	}
-		
+
 	//while(i <tamanio && !lectura->listaVacia())
 	for (int i = 1; i <= tamanio; i++)
-	{	
+	{
 		cout << "entra al for " << endl;
 		if (lectura->obtenerDato(i)->obtenerAnio() > anioLectura && lectura->obtenerDato(i) != NULL){
 			cout << "else if 1" << endl;
@@ -146,14 +148,14 @@ int Archivo :: compararLectura(string anioLectura)
 			cout << "----------"<< endl;
 			cout << "----------"<< endl;
 			lectura->obtenerDato(i)->mostrar();
-			
+
 			dato = -1;
 			cout << dato << endl;
 		}
 		cout << "sale al for " << endl;
-	//i++;	
+	//i++;
 	}
 	cout << dato << "Dato salida " << endl;
 	cout << ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"<< endl;
-	return dato;	
+	return dato;
 }

@@ -19,7 +19,7 @@ void Escritor :: mostrarDatos()
 };
 
 void Escritor :: cambiarFallecimiento(){
-	int anioFallecimientoNuevo;
+	string anioFallecimientoNuevo;
 	cout << "Ingrese el anio nuevo de fallecimiento: " << endl;
 	cin >> anioFallecimientoNuevo;
 	anioFallecimiento = anioFallecimientoNuevo;
