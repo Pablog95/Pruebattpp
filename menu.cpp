@@ -334,8 +334,6 @@ void Menu :: listarLecturaEscritor(){
         getline(cin,ingresoAutor);
 
         for (int i = 1; i <= tamanio + 1; i++) {
-            cout << lecturas -> obtenerDato(i) -> obtenerAutor() <<endl;
-
             if (ingresoAutor == lecturas -> obtenerDato(i) -> obtenerAutor()) {
 
                 cout << "---------------------------"<< endl;
@@ -357,7 +355,7 @@ void Menu :: cambiarFallecimiento (){
     do {
         int opcion;
         cout << "Cambiar Fallecimiento: " << endl;
-        cout << "Ingrese posicion del cambio de fecha: " << endl;
+        cout << "Ingrese posicion del cambio de fecha: ";
         cin >> opcion;
 
         escritores -> obtenerDato(opcion) -> cambiarFallecimiento();
