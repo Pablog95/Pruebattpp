@@ -1,6 +1,7 @@
 #ifndef COLA_H
 #define COLA_H
 #include "nodo.h"
+#include "lista.h"
 
 template <class T>
 class Cola
