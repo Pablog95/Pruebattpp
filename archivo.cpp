@@ -34,10 +34,10 @@ void Archivo :: leerArchivoEscritor() {
 		getline(archivo, nacionalidad);
 
 		getline(archivo, anioNacimiento);
-        int AniodeNacimiento = stoi(anioNacimiento);
+        	int AniodeNacimiento = stoi(anioNacimiento);
 
 		getline(archivo, anioFallecimiento);
-        int AniodeFallecimiento = stoi(anioFallecimiento);
+        	int AniodeFallecimiento = stoi(anioFallecimiento);
 
 		getline(archivo, saltoLinea);
 
@@ -64,24 +64,24 @@ void Archivo :: leerArchivoLecturas(){
 	
 		while (!archivoLectura.eof()){
 
-            int tamanio = lectura -> obtenerTamanio();
-            int tamanioEscritores = escritor -> obtenerTamanio();
+            		int tamanio = lectura -> obtenerTamanio();
+            		int tamanioEscritores = escritor -> obtenerTamanio();
 
 			getline(archivoLectura, narracion);
 			getline(archivoLectura,titulo);
 			getline(archivoLectura,minutos);
 
-            unsigned int minutosLibro = stoi(minutos);
+            		unsigned int minutosLibro = stoi(minutos);
 			getline(archivoLectura,anioPublicacion);
 
-            int anioDePublicacion = stoi(anioPublicacion);
+            		int anioDePublicacion = stoi(anioPublicacion);
 			
 			if (narracion == "C"){
 
 				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
 
-                string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
+                		string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
 
 				Lectura* nuevoCuento = new Cuento(titulo,minutosLibro,anioDePublicacion,referencia,datoSegunNarracion);
 				int posicion = comparar(nuevoCuento->obtenerAnio(),tamanio);
@@ -95,7 +95,7 @@ void Archivo :: leerArchivoLecturas(){
 				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
 
-                string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
+                		string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
 
 				Lectura* nuevoPoema = new Poema(titulo, minutosLibro, anioDePublicacion, referencia, datoSegunNarracion);
 				int posicion = comparar(nuevoPoema->obtenerAnio(),tamanio);
@@ -113,7 +113,7 @@ void Archivo :: leerArchivoLecturas(){
 					getline(archivoLectura,tema);
 					getline(archivoLectura, referenciaAutor);
 
-                    string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
+                    			string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
 
 					Lectura* nuevaHistorica = new Historica(titulo,minutosLibro,anioDePublicacion,referencia, datoSegunNarracion,tema);
 					int posicion = comparar(nuevaHistorica->obtenerAnio(),tamanio);
@@ -125,7 +125,7 @@ void Archivo :: leerArchivoLecturas(){
 
 					getline(archivoLectura, referenciaAutor);
 
-                    string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
+                    			string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
 
 					Lectura* nuevaNovela = new Novela(titulo, minutosLibro, anioDePublicacion, referencia, datoSegunNarracion);
 					int posicion = comparar(nuevaNovela->obtenerAnio(),tamanio);
