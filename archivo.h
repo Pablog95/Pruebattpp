@@ -27,7 +27,8 @@ class Archivo
 		ifstream archivoLectura;
 		void leerArchivoEscritor();
 		void leerArchivoLecturas();
-		int compararLectura(int,int);
+        string compararReferencias(string,int);
+		int comparar(int,int);
         ~Archivo(){};
 };
 

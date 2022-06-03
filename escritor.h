@@ -7,16 +7,19 @@ using namespace std;
 class Escritor
 {
     private:
+
+        string referencia;
         string nombreApellido;
         string nacionalidad;
         int anioNacimiento;
         int anioFallecimiento;
 
 	public:
-		Escritor(string _nombreApellido, string _nacionalidad, int _anioNacimiento, int _anioFallecimiento);
+		Escritor(string referencia,string _nombreApellido, string _nacionalidad, int _anioNacimiento, int _anioFallecimiento);
 		void mostrarDatos();
 		string obtenerNombreApellido();
 		void cambiarFallecimiento();
+        string obtenerReferencia();
 		~Escritor(){};
 
 };

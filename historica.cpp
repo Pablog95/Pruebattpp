@@ -5,14 +5,18 @@ Historica :: Historica (string _titulo, unsigned int _minutos, int _anio, string
 {
     long tamanioTema = _tema.length();
     char* temaDinamico = new char[tamanioTema+1];
+
     for (int i = 0; i < tamanioTema; i++){
         temaDinamico[i] = _tema[i];
     }
-    this->tema = temaDinamico;
+
+    this -> tema = temaDinamico;
 }
+
 Historica::~Historica(){
     delete[] tema;
 }
+
 void Historica :: mostrar(){
     cout << "Titulo: " << obtenerTitulo() << endl;
     cout << "Minutos: " << obtenerMinutos() << endl;
@@ -23,7 +27,7 @@ void Historica :: mostrar(){
 }
 
 string Historica :: obtenerGenero(){
-    return this->genero;
+    return this -> genero;
 }
 
 char* Historica :: obtenerTema(){

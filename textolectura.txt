@@ -10,7 +10,7 @@ Voy a dormir
 1
 1938
 14
-(4)
+(1)
 
 N
 Rayuela
@@ -19,17 +19,10 @@ Rayuela
 FICCION
 (1)
 
-C
-Casa Tomada
-20
-1951
-Bestiario
-(1)
-
 N
 Una columna de fuego
 4800
 2017
 HISTORICA
 Guerra de religiones en Europa en la segunda mitad del siglo XVI
-(5)
+(1)

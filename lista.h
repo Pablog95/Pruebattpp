@@ -36,6 +36,7 @@ Lista<T> :: Lista(){
 
 template<class T>
 Lista<T>::~Lista(){
+
 	while (!this -> listaVacia()){
 		this->borrarDato(1);
 	}
@@ -48,18 +49,23 @@ bool Lista<T> :: listaVacia(){
 
 template <class T> 
 void Lista <T> :: agregarElemento(T* dato){
+
 	Nodo<T>* nuevo = new Nodo<T>(dato);
+
 	if (!(this->listaVacia())){
 		nuevo->cambiarSiguiente(primero);
 		primero = nuevo;
-	}
+
+	}else{
+        nuevo->cambiarSiguiente(primero);
+        primero = nuevo;
+    }
 	cantidad++;
 }
 
 template<class T>
 void Lista<T> :: agregarElemento(T* dato, int lug ,int pos){
 	Nodo<T>* nuevo = new Nodo<T>(dato);
-	cout << "entro" << endl;
 
     if (lug == 0) {
         nuevo->cambiarSiguiente(primero);
@@ -76,19 +82,17 @@ void Lista<T> :: agregarElemento(T* dato, int lug ,int pos){
             Nodo<T> *anterior = obtenerNodo(pos);
             nuevo->cambiarSiguiente(anterior->obtenerSiguiente());
             anterior->cambiarSiguiente(nuevo);
-            cout << "holaaaa" << endl;
         }
-
     }
-	cout << "elemento agregado." << endl;
-
 	cantidad++;
 }
 
 template <class T>
 T* Lista<T> :: obtenerDato(int posicion){
+
 	Nodo<T>* aux = primero;
 	int contador = 1;
+
 	while (contador < posicion && aux->obtenerSiguiente()){
 		aux = aux->obtenerSiguiente();
 		contador++;
@@ -99,8 +103,10 @@ T* Lista<T> :: obtenerDato(int posicion){
 
 template<class T>
 Nodo<T>* Lista<T>::obtenerNodo(int posicion){
+
 	Nodo<T>* aux = primero;
 	int contador = 1;
+
 	while (contador < posicion){
 		aux = aux->obtenerSiguiente();
 		contador++;
@@ -110,7 +116,9 @@ Nodo<T>* Lista<T>::obtenerNodo(int posicion){
 
 template <class T>
 void Lista<T> :: borrarDato(int posicion){
+
 	Nodo<T>* auxBorrar = primero;
+
 	if(!listaVacia()){
 		if (posicion == 1){
 			primero = primero->obtenerSiguiente();

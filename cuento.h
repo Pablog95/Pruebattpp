@@ -11,9 +11,22 @@ class Cuento : public Lectura
         string tituloLibro;
 
 	public:
+        /*
+        Constructor
+        PRE: -
+        POS: construye una Clase Cuento
+        */
 		Cuento(string _titulo, unsigned int _minutos, int _anio, string _autor, string _tituloLibro);
+
+        //PRE: -
+        //POS: Muestra los datos de la clase
 		void mostrar();
+
+        //PRE: -
+        //POS: Devuelve el Genero
 		string obtenerGenero();
+
+        // Destructor
         ~Cuento(){};
 		
 };

@@ -4,20 +4,14 @@ argentino
 1914
 1984
 
-(2)
-Julio Cortazar
-argentino
--1
-1984
-
 (3)
-Julio Cortazar
-argentino
-1914
+Stephen King
+estadounidense
+1947
 -1
 
 (4)
-Julio
-argentino
--1
--1
+Alfonsina Storni
+argentina
+1892
+1938

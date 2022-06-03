@@ -13,10 +13,26 @@ class Historica : public Novela
 		char* tema;
 
 	public:
+        /*
+        Constructor
+        PRE: -
+        POS: construye una Clase Historica
+        */
 		Historica(string _titulo, unsigned int _minutos, int _anio, string _autor, string _genero, string _tema);
+
+        //PRE: -
+        //POS: Muestra los datos de la clase
 		void mostrar();
+
+        //PRE: -
+        //POS: Devuelve el Genero
 		string obtenerGenero();
+
+        //PRE: -
+        //POS: Devuelva el tema de la novela
         char* obtenerTema();
+
+        // Destructor
         ~Historica();
 		
 		

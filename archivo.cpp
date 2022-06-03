@@ -8,15 +8,17 @@
 using namespace std;
 
 Archivo :: Archivo (Lista<Escritor>* escritor,Lista<Lectura>* lectura, Cola<Lectura>* colaLectura) {
-	this->escritor = escritor;
-	this->lectura = lectura;
+
+	this -> escritor = escritor;
+	this -> lectura = lectura;
 	this -> colaLectura = colaLectura;
 
 }
 
 void Archivo :: leerArchivoEscritor() {
+
 	Escritor* nuevoEscritor = 0;
-	string primero, nombreApellido, nacionalidad,anioNacimiento,anioFallecimiento, saltoLinea;
+	string referencia, nombreApellido, nacionalidad,anioNacimiento,anioFallecimiento, saltoLinea;
 	
     archivo.open("textoescritor.txt", ios::in);
 
@@ -24,30 +26,33 @@ void Archivo :: leerArchivoEscritor() {
         cout << "No se puede abrir el archivo escritor." << endl;
         
     }else{
-	
-	while (!archivo.eof()){
 
-		getline(archivo, primero);
+        while (!archivo.eof()){
+
+		getline(archivo, referencia);
 		getline(archivo, nombreApellido);
 		getline(archivo, nacionalidad);
+
 		getline(archivo, anioNacimiento);
         int AniodeNacimiento = stoi(anioNacimiento);
+
 		getline(archivo, anioFallecimiento);
         int AniodeFallecimiento = stoi(anioFallecimiento);
+
 		getline(archivo, saltoLinea);
 
-		nuevoEscritor = new Escritor(nombreApellido,nacionalidad,AniodeNacimiento,AniodeFallecimiento);
-		escritor-> agregarElemento(nuevoEscritor);
+		nuevoEscritor = new Escritor(referencia,nombreApellido,nacionalidad,AniodeNacimiento,AniodeFallecimiento);
+		escritor -> agregarElemento(nuevoEscritor);
 
 		}
 
 	}
-
 	archivo.close();	     
 }
 
 void Archivo :: leerArchivoLecturas(){
-	string narracion, titulo,referenciaAutor = "anonimo";
+
+	string narracion, titulo,referenciaAutor;
 	string anioPublicacion, minutos, datoSegunNarracion,tema,saltoLinea;
 	
 	archivoLectura.open("textolectura.txt", ios::in);
@@ -59,68 +64,100 @@ void Archivo :: leerArchivoLecturas(){
 	
 		while (!archivoLectura.eof()){
 
-            int tamanio = lectura->obtenerTamanio();
+            int tamanio = lectura -> obtenerTamanio();
+            int tamanioEscritores = escritor -> obtenerTamanio();
 
 			getline(archivoLectura, narracion);
 			getline(archivoLectura,titulo);
 			getline(archivoLectura,minutos);
+
             unsigned int minutosLibro = stoi(minutos);
 			getline(archivoLectura,anioPublicacion);
+
             int anioDePublicacion = stoi(anioPublicacion);
 			
 			if (narracion == "C"){
+
 				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
-				Lectura* nuevoCuento = new Cuento(titulo,minutosLibro,anioDePublicacion,referenciaAutor,datoSegunNarracion);
-				int posicion = compararLectura(nuevoCuento->obtenerAnio(),tamanio);
 
-				lectura->agregarElemento(nuevoCuento,posicion,tamanio);
+                string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
 
-			 	colaLectura->agregarCola(nuevoCuento);
+				Lectura* nuevoCuento = new Cuento(titulo,minutosLibro,anioDePublicacion,referencia,datoSegunNarracion);
+				int posicion = comparar(nuevoCuento->obtenerAnio(),tamanio);
+
+				lectura -> agregarElemento(nuevoCuento,posicion,tamanio);
+			 	colaLectura -> agregarCola(nuevoCuento);
 			}
 			
 			if(narracion == "P"){
+
 				getline(archivoLectura,datoSegunNarracion);
 				getline(archivoLectura, referenciaAutor);
-				Lectura* nuevoPoema = new Poema(titulo, minutosLibro, anioDePublicacion, referenciaAutor, datoSegunNarracion);
-				int posicion = compararLectura(nuevoPoema->obtenerAnio(),tamanio);
 
-				lectura->agregarElemento(nuevoPoema,posicion,tamanio);
+                string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
 
-			 	colaLectura->agregarCola(nuevoPoema);
+				Lectura* nuevoPoema = new Poema(titulo, minutosLibro, anioDePublicacion, referencia, datoSegunNarracion);
+				int posicion = comparar(nuevoPoema->obtenerAnio(),tamanio);
+
+				lectura -> agregarElemento(nuevoPoema,posicion,tamanio);
+			 	colaLectura -> agregarCola(nuevoPoema);
 			}
 			
 			if(narracion == "N"){
+
 				getline(archivoLectura,datoSegunNarracion);
+
 				if (datoSegunNarracion == "HISTORICA"){
+
 					getline(archivoLectura,tema);
 					getline(archivoLectura, referenciaAutor);
-					Lectura* nuevaHistorica = new Historica(titulo,minutosLibro,anioDePublicacion,referenciaAutor, datoSegunNarracion,tema);
-					int posicion = compararLectura(nuevaHistorica->obtenerAnio(),tamanio);
 
-					lectura->agregarElemento(nuevaHistorica, posicion, tamanio);
+                    string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
 
-					
-					colaLectura->agregarCola(nuevaHistorica);
+					Lectura* nuevaHistorica = new Historica(titulo,minutosLibro,anioDePublicacion,referencia, datoSegunNarracion,tema);
+					int posicion = comparar(nuevaHistorica->obtenerAnio(),tamanio);
+
+					lectura -> agregarElemento(nuevaHistorica, posicion, tamanio);
+					colaLectura -> agregarCola(nuevaHistorica);
+
 				}else{
+
 					getline(archivoLectura, referenciaAutor);
-					Lectura* nuevaNovela = new Novela(titulo, minutosLibro, anioDePublicacion, referenciaAutor, datoSegunNarracion);
-					int posicion = compararLectura(nuevaNovela->obtenerAnio(),tamanio);
 
-					lectura->agregarElemento(nuevaNovela,posicion, tamanio);
+                    string referencia = compararReferencias(referenciaAutor,tamanioEscritores);
 
-			 		colaLectura->agregarCola(nuevaNovela);
+					Lectura* nuevaNovela = new Novela(titulo, minutosLibro, anioDePublicacion, referencia, datoSegunNarracion);
+					int posicion = comparar(nuevaNovela->obtenerAnio(),tamanio);
+
+					lectura -> agregarElemento(nuevaNovela,posicion, tamanio);
+			 		colaLectura -> agregarCola(nuevaNovela);
 			 	}
 			 }
 			getline(archivoLectura, saltoLinea);
 		}
-
 	}
-
 	archivoLectura.close();
 }
 
-int Archivo :: compararLectura(int anioLectura, int tamanio)
+string Archivo :: compararReferencias(string referencia,int tamanioEscritor){
+
+    string referenciaAutor;
+
+    for(int i = 0 ; i <= tamanioEscritor; i++ ){
+        if(escritor->obtenerDato(i)->obtenerReferencia() == referencia) {
+
+            referenciaAutor = escritor->obtenerDato(i)->obtenerNombreApellido();
+        }
+    }
+    if (referencia == "ANONIMO"){
+        referenciaAutor = "ANONIMO";
+    }
+    return referenciaAutor;
+}
+
+
+int Archivo :: comparar(int anioLectura, int tamanio)
 {
 	int dato = 0;
 

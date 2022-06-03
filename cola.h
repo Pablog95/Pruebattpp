@@ -11,7 +11,6 @@ class Cola
         Nodo<T>* primero;
         Nodo<T>* ultimo;
 
-
     public:
 		Cola();
 		~Cola();
@@ -23,12 +22,14 @@ class Cola
 
 template <class T>
 Cola<T> :: Cola(){
+
 	primero = 0;
 	ultimo = 0;
 }
 
 template <class T>
 Cola<T> :: ~Cola(){
+
 	while(!(colaVacia())){
 		bajaCola();
 	}
@@ -46,11 +47,15 @@ T* Cola<T> :: obtenerDatoCola(){
 }
 template <class T>
 T* Cola<T> :: bajaCola(){
-	if(primero == ultimo)
-		ultimo = 0;
+
+	if(primero == ultimo) {
+        ultimo = 0;
+    }
+
 	Nodo<T>* pAux = primero;
 	T* aux= (primero->obtenerDato());
 	primero = pAux->obtenerSiguiente();
+
 	delete pAux;
 	return aux;
 }
@@ -59,11 +64,14 @@ T* Cola<T> :: bajaCola(){
 template <class T>
 
 void Cola<T>::agregarCola(T *dato) {
+
     Nodo<T>* nuevo = new Nodo<T>(dato);
+
     if (primero)
         ultimo->cambiarSiguiente(nuevo);
     else
         primero = nuevo;
+
     ultimo = nuevo;
 }
 
