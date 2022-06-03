@@ -8,15 +8,34 @@ class Cola
 {
     private:
         T* dato;
-        Nodo<T>* primero;
-        Nodo<T>* ultimo;
+        Nodo<T>* primero; //Primer elemento de la cola.
+        Nodo<T>* ultimo; //Ultimo elemento de la cola.
 
     public:
+		//Constructor
+		//PRE: -
+		//POST: Inicia la cola.
 		Cola();
+		
+		//Destructor.
+		//PRE:
+		//POST:
 		~Cola();
+		
+		//PRE: Cola creada.
+		//POST: Devuelve TRUE si la cola no es vacia.
 		bool colaVacia();
+	
+		//PRE: Cola creada.
+		//POST: Agrega dato puntero al final de la cola.
 		void agregarCola(T* dato);
+	
+		//PRE: Cola creada y no vacia.
+		//POST:	Devuelve el dato que es primero en la cola.
 		T* obtenerDatoCola();
+
+		//PRE: Cola creada y no vacia.
+		//POST: Da de baja el dato primero.
 		T* bajaCola();
 };
 
