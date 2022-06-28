@@ -7,6 +7,16 @@
 
 using namespace std;
 
+matrizPesos[4][4] = {
+	
+	{1,0,10,15},
+	{0,8,5,20},
+	{10,5,30,60},
+	{15,20,60,80}
+}
+
+vectorLetras[4]= ["P","C","N","H"];
+
 
 template <class T>
 class Grafo2 {
